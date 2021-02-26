@@ -1,0 +1,15 @@
+{
+  "name": "fhbielefeld/examnotifications",
+  "description": "Plugin for Notifications during Exams",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Sebastian Otte",
+      "email": "sebastian.otte@fh-bielefeld.de"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  }
+}
