@@ -6,7 +6,7 @@ use ILIAS\DI\Container;
 
 /**
  * Class SetMessageGUI
- * @ilCtrl_isCalledBy SetMessageGUI: ilObjTestGUI
+ * @ilCtrl_isCalledBy SetMessageGUI: ilTestParticipantsGUI
  */
 class SetMessageGUI
 {

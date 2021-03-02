@@ -8,7 +8,7 @@ use ILIAS\DI\Container;
 
 /**
  * Class DisplayMessageGUI
- * @ilCtrl_isCalledBy DisplayMessageGUI: ilObjTestGUI
+ * @ilCtrl_isCalledBy DisplayMessageGUI: ilTestPlayerFixedQuestionSetGUI
  * @ilCtrl_isCalledBy DisplayMessageGUI: ilUIPluginRouterGUI
  */
 class DisplayMessageGUI

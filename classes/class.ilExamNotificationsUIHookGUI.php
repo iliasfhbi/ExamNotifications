@@ -47,7 +47,7 @@ class ilExamNotificationsUIHookGUI extends ilUIHookPluginGUI
      */
     function getHTML($a_comp, $a_part, $a_par = array())
     {
-        if ($_GET["cmdClass"] === "ilobjtestgui" && $_GET["cmd"] === "participants") {
+        if ($_GET["cmdClass"] === "iltestparticipantsgui") {
             // place to add controls for setting a message
             $referenceId = $_GET["ref_id"];
             if ($a_par["tpl_id"] === "Services/Table/tpl.table2.html" && $a_part === "template_get") {
