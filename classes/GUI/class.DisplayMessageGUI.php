@@ -46,7 +46,10 @@ class DisplayMessageGUI
             if(isset($_GET["ref_id"]) && is_numeric($_GET["ref_id"])) {
                 $testObjectRefId = $_GET["ref_id"];
             } else {
-                // todo: error - no reference id provided
+                // no reference id provided
+                $ilErr = $this->dic['ilErr'];
+                $lng = $this->dic['lng'];
+                $ilErr->raiseError($lng->txt('permission_denied'), $ilErr->WARNING);
             }
         }
 
@@ -62,7 +65,15 @@ class DisplayMessageGUI
      */
     public function getHTML(): string
     {
-        // todo: make sure the user is allowed to read this object
+        // make sure the user is allowed to read this object
+        $accessHandler = $this->dic->access();
+        if(!$accessHandler->checkAccess("read", "", $this->testObject->getRefId(), $this->testObject->getType(), $this->testObject->getId())) {
+            // user is not allowed to read the test object
+            $ilErr = $this->dic['ilErr'];
+            $lng = $this->dic['lng'];
+
+            $ilErr->raiseError($lng->txt('permission_denied'), $ilErr->WARNING);
+        }
 
         // setup message container
         $messageContainerTemplate = $this->plugin->getTemplate("tpl.displayMessageContainer.html");

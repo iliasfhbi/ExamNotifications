@@ -49,7 +49,15 @@ class SetMessageGUI
      */
     public function getHTML(): string
     {
-        // todo: make sure the user is allowed to write this object
+        // make sure the user is allowed to write this object
+        $accessHandler = $this->dic->access();
+        if(!$accessHandler->checkAccess("write", "", $this->testObject->getRefId(), $this->testObject->getType(), $this->testObject->getId())) {
+            // user is not allowed to edit the test object
+            $ilErr = $this->dic['ilErr'];
+            $lng = $this->dic['lng'];
+
+            $ilErr->raiseError($lng->txt('permission_denied'), $ilErr->WARNING);
+        }
 
         $uiFactory = $this->dic->ui()->factory();
         $uiRenderer = $this->dic->ui()->renderer();
