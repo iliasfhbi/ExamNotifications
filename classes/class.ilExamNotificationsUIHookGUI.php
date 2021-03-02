@@ -62,8 +62,8 @@ class ilExamNotificationsUIHookGUI extends ilUIHookPluginGUI
             // place to inject content into the test page template
             $referenceId = $_GET["ref_id"];
             $this->plugin->includeClass("GUI/class.DisplayMessageGUI.php");
-            $setMessageGUI = new DisplayMessageGUI($referenceId);
-            $html = $this->dic->ctrl()->getHTML($setMessageGUI);
+            $displayMessageGUI = new DisplayMessageGUI($referenceId);
+            $html = $this->dic->ctrl()->getHTML($displayMessageGUI);
             return array("mode" => ilUIHookPluginGUI::PREPEND, "html" => $html);
         }
 
