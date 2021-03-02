@@ -23,8 +23,15 @@
             }
 
             function requestMessageSuccess(responseText) {
-                console.log(responseText);
-                $("#ui-uihk-exnot-displayMessage-container").html("<p class='alert alert-info'>" + responseText + "</p>") // display response text as bootstrap alert
+                var $container = $("#ui-uihk-exnot-displayMessage-container");
+
+                if(responseText) {
+                    // display response text as bootstrap alert
+                    $container.html("<p class='alert alert-info'>" + responseText + "</p>")
+                } else {
+                    // remove content if there is no text
+                    $container.html("")
+                }
             }
         }
     );

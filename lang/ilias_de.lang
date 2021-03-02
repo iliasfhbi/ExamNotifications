@@ -1,4 +1,6 @@
 setMessage_header#:#Nachricht an die Teilnehmer
 setMessage_messageText_label#:#Nachrichtentext
 setMessage_messageText_submit#:#Speichern
+setMessage_messageText_reset#:#Nachricht zurücksetzen
 setMessage_messageSet#:#Die Nachricht wurde für die Teilnehmer des Tests gespeichert.
+setMessage_messageReset#:#Die Nachricht wurde zurückgesetzt.
