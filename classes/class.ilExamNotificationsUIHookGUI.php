@@ -18,11 +18,18 @@ class ilExamNotificationsUIHookGUI extends ilUIHookPluginGUI
      */
     private $dic;
 
+    /**
+     * @var ilExamNotificationsPlugin
+     */
+    private $plugin;
+
     public function __construct()
     {
         global $DIC;
 
         $this->dic = $DIC;
+
+        $this->plugin = new ilExamNotificationsPlugin();
     }
 
     /**
@@ -40,19 +47,24 @@ class ilExamNotificationsUIHookGUI extends ilUIHookPluginGUI
      */
     function getHTML($a_comp, $a_part, $a_par = array())
     {
-        if ($a_par && $a_par["tpl_id"] && strpos($a_par["tpl_id"], "Modules/Test/tpl.il_as_tst_output.html") === 0) {
-            // place to inject content into the test page template
-            $referenceId = $_GET["ref_id"];
-            return array("mode" => ilUIHookPluginGUI::PREPEND, "html" => "<p class='alert alert-info'>Nachricht für die Prüfung $referenceId</p>");
-        }
-
         if ($_GET["cmdClass"] === "ilobjtestgui" && $_GET["cmd"] === "participants") {
             // place to add controls for setting a message
             $referenceId = $_GET["ref_id"];
             if ($a_par["tpl_id"] === "Services/Table/tpl.table2.html" && $a_part === "template_get") {
-                $template = $a_par["tpl_id"];
-                return array("mode" => ilUIHookPluginGUI::PREPEND, "html" => "<p class='alert alert-info'>Nachricht für die Prüfung $referenceId in Template $template, Part: $a_part</p>");
+                $this->plugin->includeClass("GUI/class.SetMessageGUI.php");
+                $setMessageGUI = new SetMessageGUI($referenceId);
+                $html = $this->dic->ctrl()->getHTML($setMessageGUI);
+                return array("mode" => ilUIHookPluginGUI::PREPEND, "html" => $html);
             }
+        }
+
+        if ($a_par && $a_par["tpl_id"] && strpos($a_par["tpl_id"], "Modules/Test/tpl.il_as_tst_output.html") === 0) {
+            // place to inject content into the test page template
+            $referenceId = $_GET["ref_id"];
+            $this->plugin->includeClass("GUI/class.DisplayMessageGUI.php");
+            $setMessageGUI = new DisplayMessageGUI($referenceId);
+            $html = $this->dic->ctrl()->getHTML($setMessageGUI);
+            return array("mode" => ilUIHookPluginGUI::PREPEND, "html" => $html);
         }
 
         return array("mode" => ilUIHookPluginGUI::KEEP, "html" => "");

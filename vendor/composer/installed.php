@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'e613ab9867c6325e3e409dabfbbbb3e7652f8da7',
     'name' => 'fhbielefeld/examnotifications',
   ),
   'versions' => 
   array (
     'fhbielefeld/examnotifications' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'e613ab9867c6325e3e409dabfbbbb3e7652f8da7',
     ),
   ),
 );

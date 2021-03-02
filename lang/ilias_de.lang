@@ -1,0 +1,4 @@
+setMessage_header#:#Nachricht an die Teilnehmer
+setMessage_messageText_label#:#Nachrichtentext
+setMessage_messageText_submit#:#Speichern
+setMessage_messageSet#:#Die Nachricht wurde für die Teilnehmer des Tests gespeichert.

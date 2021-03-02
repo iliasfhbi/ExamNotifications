@@ -9,6 +9,11 @@
       "email": "sebastian.otte@fh-bielefeld.de"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "ExamNotifications\\": "src"
+    }
+  },
   "require": {
     "php": ">=7.0"
   }
