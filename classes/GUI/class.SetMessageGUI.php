@@ -2,6 +2,8 @@
 
 use ExamNotifications\MessagesAccess;
 use ExamNotifications\MessagesAccessInterface;
+use ExamNotifications\MessageTypes;
+use ExamNotifications\NotificationMessage;
 use ILIAS\DI\Container;
 
 /**
@@ -11,6 +13,7 @@ use ILIAS\DI\Container;
 class SetMessageGUI
 {
     const PARAMETER_MESSAGE_TEXT = "messageText";
+    const PARAMETER_MESSAGE_TYPE = "messageType";
 
     /**
      * @var Container
@@ -62,27 +65,37 @@ class SetMessageGUI
         $uiFactory = $this->dic->ui()->factory();
         $uiRenderer = $this->dic->ui()->renderer();
 
-        $currentMessageText = null;
         $successMessageControl = null;
 
-        if (isset($_POST[self::PARAMETER_MESSAGE_TEXT])) {
+        if (isset($_POST[self::PARAMETER_MESSAGE_TEXT]) && isset($_POST[self::PARAMETER_MESSAGE_TYPE])) {
             // save message text to database and display success message
             $currentMessageText = htmlspecialchars($_POST[self::PARAMETER_MESSAGE_TEXT]); // escape special characters in case someone enters html or javascript code
-            $this->messagesAccess->setMessageForTest($this->testObject->getId(), $currentMessageText);
+            $currentMessage = new NotificationMessage($currentMessageText, (int) $_POST[self::PARAMETER_MESSAGE_TYPE]);
+
+            $this->messagesAccess->setMessageForTest($this->testObject->getId(), $currentMessage);
             $successMessageControl = $uiFactory->legacy("<p class='alert alert-success'>" . $this->plugin->txt("setMessage_messageSet") . "</p>");
 
         } else {
-            $currentMessageText = $this->messagesAccess->getMessageForTest($this->testObject->getId());
+            $currentMessage = $this->messagesAccess->getMessageForTest($this->testObject->getId());
         }
-
 
         $panelContent = [];
         $formTemplate = $this->plugin->getTemplate("tpl.setMessageForm.html");
 
         $formTemplate->setVariable("ACTION");
         $formTemplate->setVariable("MESSAGE_TEXT_LABEL", $this->plugin->txt("setMessage_messageText_label"));
-        $formTemplate->setVariable("MESSAGE_TEXT_VALUE", $currentMessageText);
-        $formTemplate->setVariable("MESSAGE_TEXT_SUBMIT", $this->plugin->txt("setMessage_messageText_submit"));
+        $formTemplate->setVariable("MESSAGE_TEXT_VALUE", $currentMessage ? $currentMessage->getText() : "");
+
+        $formTemplate->setVariable("MESSAGE_TYPE_LABEL", $this->plugin->txt("setMessage_messageType_label"));
+        $formTemplate->setVariable("MESSAGE_TYPE_INFO", $this->plugin->txt("setMessage_messageType_info"));
+        $formTemplate->setVariable("MESSAGE_TYPE_WARNING", $this->plugin->txt("setMessage_messageType_warning"));
+        if($currentMessage === null || $currentMessage->getType() === MessageTypes::INFORMATION) {
+            $formTemplate->setVariable("MESSAGE_TYPE_INFO_CHECKED", "checked");
+        } else {
+            $formTemplate->setVariable("MESSAGE_TYPE_WARNING_CHECKED", "checked");
+        }
+
+        $formTemplate->setVariable("MESSAGE_SUBMIT", $this->plugin->txt("setMessage_message_submit"));
         $panelContent[] = $uiFactory->legacy($formTemplate->get());
 
         $uiComponents = [];

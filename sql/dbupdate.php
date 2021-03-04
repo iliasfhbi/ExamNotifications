@@ -25,3 +25,16 @@ $fields = array(
 $ilDB->createTable("ui_uihk_exnot_tstmsg", $fields);
 $ilDB->addPrimaryKey("ui_uihk_exnot_tstmsg", array("obj_id"));
 ?>
+<#2>
+<?php
+$ilDB->addTableColumn(
+    'ui_uihk_exnot_tstmsg',
+    'message_type',
+    array(
+        'type' => 'integer',
+        'length' => 4,
+        'notnull' => true,
+        'default' => 0
+    )
+);
+?>

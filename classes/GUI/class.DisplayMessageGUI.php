@@ -96,9 +96,17 @@ class DisplayMessageGUI
         $cmd = $this->dic->ctrl()->getCmd();
 
         if($cmd === self::CMD_GET_MESSAGE) {
-            // request for current message - return nothing but plain utf-8 text
-            header('Content-type: text/plain;charset=UTF-8');
-            echo htmlspecialchars($this->messagesAccess->getMessageForTest($this->testObject->getId())); // escape special characters in message text
+            // request for current message - return message as json
+            header('Content-type: application/json;charset=UTF-8');
+
+            $message = $this->messagesAccess->getMessageForTest($this->testObject->getId());
+
+            $response = [
+                "text" => htmlspecialchars($message->getText()), // escape special characters in message text
+                "type" => $message->getType()
+            ];
+
+            echo json_encode($response);
             exit;
         }
     }

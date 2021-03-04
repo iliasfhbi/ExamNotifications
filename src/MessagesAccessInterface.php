@@ -6,13 +6,13 @@ interface MessagesAccessInterface
 {
     /**
      * @param int $testObjectId
-     * @param string $message
+     * @param NotificationMessage $message
      */
-    function setMessageForTest(int $testObjectId, string $message);
+    function setMessageForTest(int $testObjectId, NotificationMessage $message);
 
     /**
      * @param int $testObjectId
-     * @return string
+     * @return NotificationMessage|null
      */
-    function getMessageForTest(int $testObjectId): string;
+    function getMessageForTest(int $testObjectId);
 }
