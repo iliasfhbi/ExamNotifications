@@ -4,7 +4,11 @@ ILIAS-Plugin für das Senden von Benachrichtigungen an Studierende während eine
 
 ## Nutzen
 
-Während einer Prüfung können die Prüfenden Studierenden Nachrichten zukommen lassen. Die Funktion muss dabei nicht über Drittprogramme wie Zoom bereitgestellt werden, sie ist in ILIAS integriert.
+Während einer Prüfung können die Prüfenden Studierenden Nachrichten zukommen lassen.
+Die Funktion muss dabei nicht über Drittprogramme wie Zoom bereitgestellt werden, sie ist in ILIAS integriert.
+Dem Prüfenden stehen beim Einstellen der Nachricht zwei Nachrichtentypen zur Auswahl: _Information_ und _Warnung_
+
+Die Nachricht wird als andere Elemente überlagerndes Banner angezeigt, damit die Studierenden auf die Nachricht aufmerksam werden. Gleichzeitig ist es weniger aufdringlich als ein modales Dialogfenster und kann mit einem Klick geschlossen werden.
 
 ## Kompatibilität
 
@@ -15,10 +19,7 @@ Das Plugin wurde mit Version 5.4 getestet.
 ## Funktionsweise
 
 ### Für den Prüfenden
-Die Nachricht wird im Testobjekt auf dem Reiter _Dashboard_ eingestellt. Es stehen zwei Nachrichtentypen zur Auswahl: _Information_ und _Warnung_
+Die Nachricht wird im Testobjekt auf dem Reiter _Dashboard_ eingestellt. 
 
 ### Für die Studierenden
 Alle 30 Sekunden wird die Nachricht abgefragt. Falls eine Nachricht eingestellt wurde, wird diese angezeigt.
-
-Die Nachricht wird als andere Elemente überlagerndes Banner angezeigt, damit die Studierenden auf die Nachricht aufmerksam werden. Gleichzeitig ist es weniger aufdringlich als ein modales Dialogfenster.
-Die Nachricht kann mit einem Klick geschlossen werden.
