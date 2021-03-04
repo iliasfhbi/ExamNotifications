@@ -1,0 +1,7 @@
+/* display container on top of page content */
+#ui-uihk-exnot-displayMessage-container {
+    position: fixed;
+    z-index: 1050; /* make sure the messages are displayed on top of the toolbar and other elements */
+    width: 100%;
+    padding-right: 4em; /* override container margin */
+}

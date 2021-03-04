@@ -86,6 +86,8 @@ class DisplayMessageGUI
         $scriptTemplate->setVariable("URL", $url);
         $scriptTemplate->setVariable("REQUEST_INTERVAL_IN_SECONDS", self::REQUEST_MESSAGE_INTERVAL_IN_SECONDS);
         $output .= "<script>" . $scriptTemplate->get() . "</script>";
+        $styleSheetLocation = $this->plugin->getStyleSheetLocation("displayMessage.css");
+        $output .= "<link rel='stylesheet' href='$styleSheetLocation'/>";
 
         return $output;
     }
