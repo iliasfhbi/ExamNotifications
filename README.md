@@ -15,7 +15,7 @@ Das Plugin wurde mit Version 5.4 getestet.
 ## Funktionsweise
 
 ### Für den Prüfenden
-Die Nachricht wird im Testobjekt auf dem Reiter _Dashboard_ eingestellt.
+Die Nachricht wird im Testobjekt auf dem Reiter _Dashboard_ eingestellt. Es stehen zwei Nachrichtentypen zur Auswahl: _Information_ und _Warnung_
 
 ### Für die Studierenden
 Alle 30 Sekunden wird die Nachricht abgefragt. Falls eine Nachricht eingestellt wurde, wird diese angezeigt.
