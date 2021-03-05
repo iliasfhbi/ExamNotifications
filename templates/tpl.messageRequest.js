@@ -5,7 +5,7 @@
                 requestInterval: 1000 * {REQUEST_INTERVAL_IN_SECONDS} // calculate interval in milliseconds
             };
 
-            var previousMessage = "";
+            var previousMessage = null;
 
             config.requestUrl = config.requestUrl.replace(/&amp;/g, "&"); // replace all occurrences
 
@@ -27,7 +27,10 @@
 
                 var message = JSON.parse(messageJson);
 
-                if(message && message.text && message !== previousMessage) {
+                // make sure that there is a message with text. if there is no previous message set, display the message received from the response. otherwise make sure that the text or the type of the message differs from the previous message
+                if(message && message.text &&
+                    (!previousMessage || (message.text !== previousMessage.text || message.type !== previousMessage.type))) {
+
                     var alertType;
                     // map message type to alert type
                     if(message.type === 1) {
