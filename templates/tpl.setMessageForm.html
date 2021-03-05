@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="ui-uihk-exnot-setMessage-messageText" class="col-sm-3 control-label">{MESSAGE_TEXT_LABEL}</label>
         <div class="col-sm-9">
-            <input type="text" id="ui-uihk-exnot-setMessage-messageText" name="messageText" value="{MESSAGE_TEXT_VALUE}" class="form-control" maxlength="200" />
+            <input type="text" id="ui-uihk-exnot-setMessage-messageText" name="messageText" class="form-control" maxlength="200" />
         </div>
     </div>
 
@@ -11,13 +11,13 @@
         <div class="col-sm-9">
             <div class="radio">
                 <label>
-                    <input type="radio" name="messageType" value="0" {MESSAGE_TYPE_INFO_CHECKED}>
+                    <input type="radio" name="messageType" value="0" checked>
                     {MESSAGE_TYPE_INFO}
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="messageType" value="1" {MESSAGE_TYPE_WARNING_CHECKED}>
+                    <input type="radio" name="messageType" value="1">
                     {MESSAGE_TYPE_WARNING}
                 </label>
             </div>

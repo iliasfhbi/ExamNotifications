@@ -1,7 +1,7 @@
 <?php
 $id = "exnot";
 
-$version = "0.1.2";
+$version = "0.1.3";
 
 $ilias_min_version = "5.4.0";
 $ilias_max_version = "5.4.999";
