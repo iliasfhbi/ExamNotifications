@@ -6,5 +6,6 @@ setMessage_messageType_label#:#Nachrichtentyp
 setMessage_messageType_info#:#Information
 setMessage_messageType_warning#:#Warnung
 setMessage_message_submit#:#Speichern
+setMessage_message_reset#:#Zurücksetzen
 setMessage_messageSet#:#Die Nachricht wurde für die Teilnehmer des Tests gespeichert.
 setMessage_messageReset#:#Die Nachricht wurde zurückgesetzt.
