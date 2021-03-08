@@ -42,3 +42,28 @@ $ilDB->addTableColumn(
     )
 );
 ?>
+<#3>
+<?php
+/**
+ * ui_uihk_exnot_config - configuration
+ */
+global $DIC;
+$ilDB = $DIC->database();
+
+if ($ilDB->tableExists("ui_uihk_exnot_config")) {
+    // reset configuration to default
+    $ilDB->update("ui_uihk_exnot_config", ["polling_interval" => ["integer", 30]], ["1" => ["text", 1]]);
+    return;
+}
+
+$fields = array(
+    'polling_interval' => array(
+        'type' => 'integer',
+        'length' => 4
+    )
+);
+
+$ilDB->createTable("ui_uihk_exnot_config", $fields);
+// insert initial config entry
+$ilDB->insert("ui_uihk_exnot_config", ["polling_interval" => [false, 30]]);
+?>

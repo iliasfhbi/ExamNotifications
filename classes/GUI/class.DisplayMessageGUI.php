@@ -2,6 +2,8 @@
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
+use ExamNotifications\ConfigurationAccess;
+use ExamNotifications\ConfigurationAccessInterface;
 use ExamNotifications\MessagesAccess;
 use ExamNotifications\MessagesAccessInterface;
 use ILIAS\DI\Container;
@@ -14,7 +16,6 @@ use ILIAS\DI\Container;
 class DisplayMessageGUI
 {
     const CMD_GET_MESSAGE = "getMsg";
-    const REQUEST_MESSAGE_INTERVAL_IN_SECONDS = 30;
 
     /**
      * @var Container
@@ -35,6 +36,11 @@ class DisplayMessageGUI
      * @var MessagesAccessInterface
      */
     private $messagesAccess;
+
+    /**
+     * @var ConfigurationAccessInterface
+     */
+    private $configurationAccess;
 
     public function __construct(int $testObjectRefId = 0)
     {
@@ -57,6 +63,7 @@ class DisplayMessageGUI
 
         $this->plugin = new ilExamNotificationsPlugin();
         $this->messagesAccess = new MessagesAccess();
+        $this->configurationAccess = new ConfigurationAccess();
     }
 
     /**
@@ -84,7 +91,8 @@ class DisplayMessageGUI
         $scriptTemplate = $this->plugin->getTemplate("tpl.messageRequest.js");
         $url = $this->dic->ctrl()->getLinkTargetByClass(["ilUIPluginRouterGUI", "DisplayMessageGUI"], self::CMD_GET_MESSAGE) . "&ref_id=" . $this->testObject->getRefId();
         $scriptTemplate->setVariable("URL", $url);
-        $scriptTemplate->setVariable("REQUEST_INTERVAL_IN_SECONDS", self::REQUEST_MESSAGE_INTERVAL_IN_SECONDS);
+        $pollingInterval = $this->configurationAccess->getPollingInterval();
+        $scriptTemplate->setVariable("REQUEST_INTERVAL_IN_SECONDS", $pollingInterval);
         $output .= "<script>" . $scriptTemplate->get() . "</script>";
         $styleSheetLocation = $this->plugin->getStyleSheetLocation("displayMessage.css");
         $output .= "<link rel='stylesheet' href='$styleSheetLocation'/>";

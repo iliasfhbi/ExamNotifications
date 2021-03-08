@@ -9,3 +9,10 @@ setMessage_message_submit#:#Speichern
 setMessage_message_reset#:#Zurücksetzen
 setMessage_messageSet#:#Die Nachricht wurde für die Teilnehmer des Tests gespeichert.
 setMessage_messageReset#:#Die Nachricht wurde zurückgesetzt.
+config_header#:#Konfiguration des Klausurbenachrichtigungs-Plugins
+config_saved#:#Die Konfiguration wurde gespeichert.
+config_pollingInterval_outOfBounds#:#Der Wert %s liegt nicht im erlaubten Bereich.
+config_pollingInterval_section#:#Abfrageintervall
+config_pollingInterval_section_description#:#Abfrageintervall konfigurieren
+config_pollingInterval_label#:#Abfrageintervall
+config_pollingInterval_byline#:#Die Zeit, die maximal vergehen soll, bis erneut auf eine neue Nachricht geprüft wird. Angabe zwischen %s und %s Sekunden.
