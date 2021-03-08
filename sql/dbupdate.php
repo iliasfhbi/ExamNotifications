@@ -27,6 +27,10 @@ $ilDB->addPrimaryKey("ui_uihk_exnot_tstmsg", array("obj_id"));
 ?>
 <#2>
 <?php
+if($ilDB->tableColumnExists("ui_uihk_exnot_tstmsg", "message_type")){
+    return;
+}
+
 $ilDB->addTableColumn(
     'ui_uihk_exnot_tstmsg',
     'message_type',
