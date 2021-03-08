@@ -9,6 +9,10 @@
 
             config.requestUrl = config.requestUrl.replace(/&amp;/g, "&"); // replace all occurrences
 
+            // initial request on page load
+            requestMessage();
+
+            // start timer
             setInterval(requestMessage, config.requestInterval);
 
             function requestMessage() {
