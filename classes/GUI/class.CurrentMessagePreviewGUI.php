@@ -35,6 +35,7 @@ class CurrentMessagePreviewGUI
      * @throws ilTemplateException
      */
     public function getHTML(): string {
+        // use custom template instead of message box control to mimic the behaviour of the recurrently executed script
         $template = $this->plugin->getTemplate("tpl.messagePreview.html");
 
         $alertType = $this->message->getType() === 0 ? "info" : "warning";
