@@ -12,14 +12,20 @@ Die Nachricht wird als andere Elemente überlagerndes Banner angezeigt, damit di
 
 ## Kompatibilität
 
-Das Plugin wurde mit Version 5.4 getestet.
+Das Plugin wurde ausschließlich mit Version 5.4 getestet.
 
 **Empfehlung:** im Testobjekt sollte im Reiter _Einstellungen_ unter _Durchführung: Steuerung Testdurchlauf_ die _Prüfungsansicht_ aktiviert werden, damit die Darstellung in Kombination mit der ILIAS-Werkzeugleiste am oberen Rand harmoniert.
 
 ## Funktionsweise
 
 ### Für den Prüfenden
-Die Nachricht wird im Testobjekt auf dem Reiter _Dashboard_ eingestellt. 
+Die Nachricht wird im Testobjekt auf dem Reiter _Dashboard_ eingestellt. Sobald eine Nachricht eingestellt wurde, kann diese dort auch zurückgesetzt werden.
 
 ### Für die Studierenden
-Alle 30 Sekunden wird die Nachricht abgefragt. Falls eine Nachricht eingestellt wurde, wird diese angezeigt.
+Die Nachricht wird regelmäßig abgefragt. Falls eine Nachricht eingestellt wurde, wird diese angezeigt.
+
+## Konfiguration
+
+### Abfragezeit
+
+Die Abfragezeit (=Zeit, die maximal zwischen zwei Nachrichtenabfragen vergeht) kann im Konfigurationsbereich des Plugins auf einen Wert zwischen 5 und 300 Sekunden eingestellt werden.
