@@ -76,11 +76,11 @@ class SetMessageGUI
             $currentMessage = new NotificationMessage($currentMessageText, (int)$_POST[self::PARAMETER_MESSAGE_TYPE]);
 
             $this->messagesAccess->setMessageForTest($this->testObject->getId(), $currentMessage);
-            $successMessageControl = $uiFactory->legacy("<p class='alert alert-success'>" . $this->plugin->txt("setMessage_messageSet") . "</p>");
+            $successMessageControl = $uiFactory->messageBox()->success($this->plugin->txt("setMessage_messageSet"));
         } elseif (isset($_POST[self::PARAMETER_RESET_MESSAGE])) {
             // reset message and display success message
             $this->messagesAccess->setMessageForTest($this->testObject->getId(), new NotificationMessage(""));
-            $successMessageControl = $uiFactory->legacy("<p class='alert alert-success'>" . $this->plugin->txt("setMessage_messageReset") . "</p>");
+            $successMessageControl = $uiFactory->messageBox()->success($this->plugin->txt("setMessage_messageReset"));
         } else {
             // get current text from database
             $currentMessage = $this->messagesAccess->getMessageForTest($this->testObject->getId());
