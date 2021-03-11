@@ -38,7 +38,16 @@ class CurrentMessagePreviewGUI
         // use custom template instead of message box control to mimic the behaviour of the recurrently executed script
         $template = $this->plugin->getTemplate("tpl.messagePreview.html");
 
-        $alertType = $this->message->getType() === 0 ? "info" : "warning";
+        switch($this->message->getType()){
+            case 0:
+                $alertType = "info";
+                break;
+            case 1:
+                $alertType = "warning";
+                break;
+            default:
+                $alertType = "danger";
+        }
 
         $template->setVariable("ALERT_TYPE", $alertType);
         $template->setVariable("ALERT_TEXT", htmlspecialchars($this->message->getText()));

@@ -2,6 +2,7 @@
 
 use ExamNotifications\MessagesAccess;
 use ExamNotifications\MessagesAccessInterface;
+use ExamNotifications\MessageTypes;
 use ExamNotifications\NotificationMessage;
 use ILIAS\DI\Container;
 
@@ -70,10 +71,10 @@ class SetMessageGUI
         $currentMessage = null;
         $successMessageControl = null;
 
-        if (isset($_POST[self::PARAMETER_MESSAGE_TEXT]) && isset($_POST[self::PARAMETER_MESSAGE_TYPE])) {
+        if (isset($_POST[self::PARAMETER_MESSAGE_TEXT])) {
             // save message text to database and display success message
             $currentMessageText = htmlspecialchars($_POST[self::PARAMETER_MESSAGE_TEXT]); // escape special characters in case someone enters html or javascript code
-            $currentMessage = new NotificationMessage($currentMessageText, (int)$_POST[self::PARAMETER_MESSAGE_TYPE]);
+            $currentMessage = new NotificationMessage($currentMessageText, MessageTypes::DANGER);
 
             $this->messagesAccess->setMessageForTest($this->testObject->getId(), $currentMessage);
             $successMessageControl = $uiFactory->messageBox()->success($this->plugin->txt("setMessage_messageSet"));
@@ -104,10 +105,6 @@ class SetMessageGUI
         $formTemplate = $this->plugin->getTemplate("tpl.setMessageForm.html");
 
         $formTemplate->setVariable("MESSAGE_TEXT_LABEL", $this->plugin->txt("setMessage_messageText_label"));
-
-        $formTemplate->setVariable("MESSAGE_TYPE_LABEL", $this->plugin->txt("setMessage_messageType_label"));
-        $formTemplate->setVariable("MESSAGE_TYPE_INFO", $this->plugin->txt("setMessage_messageType_info"));
-        $formTemplate->setVariable("MESSAGE_TYPE_WARNING", $this->plugin->txt("setMessage_messageType_warning"));
 
         $formTemplate->setVariable("MESSAGE_SUBMIT", $this->plugin->txt("setMessage_message_submit"));
         $panelContent[] = $uiFactory->panel()->sub($this->plugin->txt("setMessage_message_header"), $uiFactory->legacy($formTemplate->get()));

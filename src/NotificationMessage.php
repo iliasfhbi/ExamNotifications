@@ -19,7 +19,7 @@ class NotificationMessage
      * @param string $text
      * @param int $type
      */
-    public function __construct(string $text, int $type = MessageTypes::INFORMATION)
+    public function __construct(string $text, int $type = MessageTypes::DANGER)
     {
         $this->text = $text;
         $this->type = $type;
