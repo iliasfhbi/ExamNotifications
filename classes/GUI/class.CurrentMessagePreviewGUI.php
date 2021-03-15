@@ -50,7 +50,14 @@ class CurrentMessagePreviewGUI
         }
 
         $template->setVariable("ALERT_TYPE", $alertType);
-        $template->setVariable("ALERT_TEXT", htmlspecialchars($this->message->getText()));
+
+        // replace curly braces in preview with html codes because otherwise text enclosed in curly braces is treated as a template variable
+        $messageText = $this->message->getText();
+        $messageText = htmlspecialchars($messageText);
+        $messageText = str_replace("{", "&lcub;", $messageText);
+        $messageText = str_replace("}", "&rcub;", $messageText);
+
+        $template->setVariable("ALERT_TEXT", $messageText); // escape special characters in case someone enters html or javascript code
 
         return $template->get();
     }

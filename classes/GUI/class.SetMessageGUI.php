@@ -73,7 +73,7 @@ class SetMessageGUI
 
         if (isset($_POST[self::PARAMETER_MESSAGE_TEXT])) {
             // save message text to database and display success message
-            $currentMessageText = htmlspecialchars($_POST[self::PARAMETER_MESSAGE_TEXT]); // escape special characters in case someone enters html or javascript code
+            $currentMessageText = $_POST[self::PARAMETER_MESSAGE_TEXT];
             $currentMessage = new NotificationMessage($currentMessageText, MessageTypes::DANGER);
 
             $this->messagesAccess->setMessageForTest($this->testObject->getId(), $currentMessage);
