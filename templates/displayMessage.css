@@ -11,6 +11,12 @@ body.std #ui-uihk-exnot-displayMessage-container {
     padding-right: 60px; /* override container margins */
 }
 
+@media only screen and (max-width: 767px) {
+    body.std #ui-uihk-exnot-displayMessage-container {
+        padding-right: 30px; /* override container margins */
+    }
+}
+
 /* using the examination view, the message is displayed across the whole screen */
 body.kiosk #ui-uihk-exnot-displayMessage-container {
     padding-right: 4em; /* override container margins */
