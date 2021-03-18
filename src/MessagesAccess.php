@@ -2,7 +2,9 @@
 
 namespace ExamNotifications;
 
+use DateTime;
 use ILIAS\DI\Container;
+use ilObjUser;
 
 class MessagesAccess implements MessagesAccessInterface
 {
@@ -22,10 +24,14 @@ class MessagesAccess implements MessagesAccessInterface
     {
         if ($this->testHasDatabaseEntry($testObjectId)) {
             // update message for test
-            $this->dic->database()->manipulateF("UPDATE ui_uihk_exnot_tstmsg SET message_text = %s, message_type = %s WHERE obj_id = %s;", ["text", "integer", "integer"], [$message->getText(), $message->getType(), $testObjectId]);
+            $this->dic->database()->manipulateF("UPDATE ui_uihk_exnot_tstmsg SET message_text = %s, message_type = %s, message_sender_id = %s, message_timestamp = %s WHERE obj_id = %s;",
+                ["text", "integer", "integer", "text", "integer"],
+                [$message->getText(), $message->getType(), $message->getSender()->getId(), $message->getTimestamp()->format("Y-m-d H:i:s"), $testObjectId]);
         } else {
             // insert message for test
-            $this->dic->database()->manipulateF("INSERT INTO ui_uihk_exnot_tstmsg (obj_id, message_text, message_type) VALUES (%s, %s, %s);", ["integer", "text", "integer"], [$testObjectId, $message->getText(), $message->getType()]);
+            $this->dic->database()->manipulateF("INSERT INTO ui_uihk_exnot_tstmsg (obj_id, message_text, message_type, message_sender_id, message_timestamp) VALUES (%s, %s, %s, %s, %s);",
+                ["integer", "text", "integer", "integer", "text"],
+                [$testObjectId, $message->getText(), $message->getType(), $message->getSender()->getId(), $message->getTimestamp()->format("Y-m-d H:i:s")]);
         }
     }
 
@@ -33,13 +39,15 @@ class MessagesAccess implements MessagesAccessInterface
     {
         if ($this->testHasDatabaseEntry($testObjectId)) {
             $statement = $this->dic->database()->queryF(
-                "SELECT message_text, message_type FROM ui_uihk_exnot_tstmsg WHERE obj_id = %s;",
+                "SELECT message_text, message_type, message_sender_id, message_timestamp FROM ui_uihk_exnot_tstmsg WHERE obj_id = %s;",
                 ["integer"],
                 [$testObjectId]);
 
             if ($statement->numRows() > 0) {
                 $result = $statement->fetchAssoc();
-                return new NotificationMessage($result["message_text"], $result["message_type"]);
+                $messageSender = new ilObjUser($result["message_sender_id"]);
+                $messageTimestamp = new DateTime($result["message_timestamp"]);
+                return new NotificationMessage($result["message_text"], $messageSender, $messageTimestamp, $result["message_type"]);
             }
         }
         return null;

@@ -47,8 +47,14 @@
                         default:
                             alertType = "danger"; // default is danger
                     }
+
+                    // alert title
+                    var messageTimestamp = new Date(message.timestamp);
+                    var alertTitleText = message.sender + " - " + messageTimestamp.toLocaleTimeString();
+
                     // display message as bootstrap alert
-                    $container.html("<p class='alert alert-" + alertType + "'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + message.text + "</p>");
+                    var closeButton = "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>";
+                    $container.html("<p class='alert alert-" + alertType + "'>" + closeButton + "<strong class='alert-title'>" + alertTitleText + "</strong>" + message.text + "</p>");
                 } else if (!message || message.text === "") {
                     // remove content if there is no message text
                     $container.html("")

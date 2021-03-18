@@ -15,3 +15,8 @@ body.std #ui-uihk-exnot-displayMessage-container {
 body.kiosk #ui-uihk-exnot-displayMessage-container {
     padding-right: 4em; /* override container margins */
 }
+
+/* display alert title as separate line */
+#ui-uihk-exnot-displayMessage-container .alert-title, #ui-uihk-exnot-messagePreview-container .alert-title {
+    display: block;
+}

@@ -67,3 +67,39 @@ $ilDB->createTable("ui_uihk_exnot_config", $fields);
 // insert initial config entry
 $ilDB->insert("ui_uihk_exnot_config", ["polling_interval" => [false, 30]]);
 ?>
+<#4>
+<?php
+/**
+ * ui_uihk_exnot_tstmsg - test messages
+ */
+global $DIC;
+$ilDB = $DIC->database();
+
+if($ilDB->tableColumnExists("ui_uihk_exnot_tstmsg", "message_sender_id")){
+    return;
+}
+
+// delete previous messages so the data does not become invalid
+$ilDB->manipulate("DELETE FROM ui_uihk_exnot_tstmsg;");
+
+// add a column for the user id of the user that sends the message
+$ilDB->addTableColumn(
+    'ui_uihk_exnot_tstmsg',
+    'message_sender_id',
+    array(
+        'type' => 'integer',
+        'length' => 4,
+        'notnull' => true
+    )
+);
+
+// add a column for the date and time the message was set, so relative times in messages can be interpreted correctly
+$ilDB->addTableColumn(
+    'ui_uihk_exnot_tstmsg',
+    'message_timestamp',
+    array(
+        'type' => 'timestamp',
+        'notnull' => true
+    )
+);
+?>

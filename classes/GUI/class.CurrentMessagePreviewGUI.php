@@ -38,6 +38,7 @@ class CurrentMessagePreviewGUI
         // use custom template instead of message box control to mimic the behaviour of the recurrently executed script
         $template = $this->plugin->getTemplate("tpl.messagePreview.html");
 
+        // set alert type
         switch($this->message->getType()){
             case 0:
                 $alertType = "info";
@@ -50,6 +51,10 @@ class CurrentMessagePreviewGUI
         }
 
         $template->setVariable("ALERT_TYPE", $alertType);
+
+        // format alert title
+        $alertTitle = sprintf("%s - %s", $this->message->getSender()->getFullname(), $this->message->getTimestamp()->format("H:i:s"));
+        $template->setVariable("ALERT_TITLE", $alertTitle);
 
         // replace curly braces in preview with html codes because otherwise text enclosed in curly braces is treated as a template variable
         $messageText = $this->message->getText();

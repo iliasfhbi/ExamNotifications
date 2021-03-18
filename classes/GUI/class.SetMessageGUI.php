@@ -33,6 +33,11 @@ class SetMessageGUI
     private $testObject;
 
     /**
+     * @var ilObjUser
+     */
+    private $currentUser;
+
+    /**
      * @var MessagesAccessInterface
      */
     private $messagesAccess;
@@ -45,6 +50,7 @@ class SetMessageGUI
         $this->plugin = new ilExamNotificationsPlugin();
 
         $this->testObject = new ilObjTest($testObjectRefId);
+        $this->currentUser = $DIC->user();
         $this->messagesAccess = new MessagesAccess();
         $this->plugin->includeClass("GUI/class.CurrentMessagePreviewGUI.php");
     }
@@ -74,13 +80,13 @@ class SetMessageGUI
         if (isset($_POST[self::PARAMETER_MESSAGE_TEXT])) {
             // save message text to database and display success message
             $currentMessageText = $_POST[self::PARAMETER_MESSAGE_TEXT];
-            $currentMessage = new NotificationMessage($currentMessageText, MessageTypes::DANGER);
+            $currentMessage = new NotificationMessage($currentMessageText, $this->currentUser, new DateTime(), MessageTypes::DANGER);
 
             $this->messagesAccess->setMessageForTest($this->testObject->getId(), $currentMessage);
             $successMessageControl = $uiFactory->messageBox()->success($this->plugin->txt("setMessage_messageSet"));
         } elseif (isset($_POST[self::PARAMETER_RESET_MESSAGE])) {
             // reset message and display success message
-            $this->messagesAccess->setMessageForTest($this->testObject->getId(), new NotificationMessage(""));
+            $this->messagesAccess->setMessageForTest($this->testObject->getId(), new NotificationMessage("", $this->currentUser, new DateTime()));
             $successMessageControl = $uiFactory->messageBox()->success($this->plugin->txt("setMessage_messageReset"));
         } else {
             // get current text from database
@@ -98,6 +104,9 @@ class SetMessageGUI
             $resetMessageFormTemplate = $this->plugin->getTemplate("tpl.resetMessageForm.html");
             $resetMessageFormTemplate->setVariable("SUBMIT", $this->plugin->txt("setMessage_message_reset"));
             $previewPanelContent[] = $uiFactory->legacy($resetMessageFormTemplate->get());
+            // add css file
+            $styleSheetLocation = $this->plugin->getStyleSheetLocation("displayMessage.css");
+            $previewPanelContent[] = $uiFactory->legacy("<link rel='stylesheet' href='$styleSheetLocation'/>");
             // add sub panel to panel
             $panelContent[] = $uiFactory->panel()->sub($this->plugin->txt("setMessage_preview_header"), $previewPanelContent);
         }
