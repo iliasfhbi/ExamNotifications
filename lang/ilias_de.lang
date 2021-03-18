@@ -2,6 +2,7 @@ setMessage_header#:#Nachricht an die Teilnehmer
 setMessage_preview_header#:#Aktuelle Nachricht
 setMessage_message_header#:#Neue Nachricht festlegen
 setMessage_messageText_label#:#Nachrichtentext
+setMessage_messageText_byline#:#Maximal %s Zeichen
 setMessage_messageType_label#:#Nachrichtentyp
 setMessage_messageType_info#:#Information
 setMessage_messageType_warning#:#Warnung

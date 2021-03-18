@@ -102,10 +102,10 @@ class SetMessageGUI
             $panelContent[] = $uiFactory->panel()->sub($this->plugin->txt("setMessage_preview_header"), $previewPanelContent);
         }
 
-        $formTemplate = $this->plugin->getTemplate("tpl.setMessageForm.html");
+        $formTemplate = $this->plugin->getTemplate("tpl.setMessageForm.html"); // todo: change to 5.4 forms
 
         $formTemplate->setVariable("MESSAGE_TEXT_LABEL", $this->plugin->txt("setMessage_messageText_label"));
-
+        $formTemplate->setVariable("MESSAGE_TEXT_BYLINE", sprintf($this->plugin->txt("setMessage_messageText_byline"), NotificationMessage::MAXIMUM_LENGTH));
         $formTemplate->setVariable("MESSAGE_SUBMIT", $this->plugin->txt("setMessage_message_submit"));
         $panelContent[] = $uiFactory->panel()->sub($this->plugin->txt("setMessage_message_header"), $uiFactory->legacy($formTemplate->get()));
 

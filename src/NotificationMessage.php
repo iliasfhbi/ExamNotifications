@@ -4,6 +4,8 @@ namespace ExamNotifications;
 
 class NotificationMessage
 {
+    const MAXIMUM_LENGTH = 200;
+
     /**
      * @var string
      */
