@@ -3,5 +3,15 @@
     position: fixed;
     z-index: 1050; /* make sure the messages are displayed on top of the toolbar and other elements */
     width: 100%;
-    padding-right: 4em; /* override container margin */
+}
+
+/* if the examination view is not used, we need to set a maximum width so the close button is visible */
+body.std #ui-uihk-exnot-displayMessage-container {
+    max-width: 1400px; /* use same maximum width as .ilContainerWidth */
+    padding-right: 60px; /* override container margins */
+}
+
+/* using the examination view, the message is displayed across the whole screen */
+body.kiosk #ui-uihk-exnot-displayMessage-container {
+    padding-right: 4em; /* override container margins */
 }
