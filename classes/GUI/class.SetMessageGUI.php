@@ -14,7 +14,6 @@ use ILIAS\DI\Container;
 class SetMessageGUI
 {
     const PARAMETER_MESSAGE_TEXT = "messageText";
-    const PARAMETER_MESSAGE_TYPE = "messageType";
     const PARAMETER_RESET_MESSAGE = "reset";
 
     /**
