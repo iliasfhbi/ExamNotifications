@@ -17,7 +17,7 @@ Die Nachricht wird pro Testobjekt auf dem Reiter _Dashboard_ eingestellt. Es kan
 
 *Beispiel für eine Nachricht im Dashboard:*
 
-![Beispiel für eine Nachricht im Dashboard](documentation/Example_Dashboard.png)
+![Beispiel für eine Nachricht im Dashboard](doc/images/Example_Dashboard.png)
 
 ---
 
@@ -26,7 +26,7 @@ Die Nachricht wird in der Ansicht zur Bearbeitung einer Frage regelmäßig im Hi
 
 *Beispiel für eine Nachricht in der Prüfungsansicht:*
 
-![Beispiel für eine Nachricht in der Prüfungsansicht](documentation/Example_Prüfungsansicht.png)
+![Beispiel für eine Nachricht in der Prüfungsansicht](doc/images/Example_ExamView.png)
 
 ## Kompatibilität
 
