@@ -88,6 +88,8 @@ class SetMessageGUI
             } else {
                 // there is no text in this message, could be some spaces or similar
                 $successMessageControl = $uiFactory->messageBox()->failure($this->plugin->txt("setMessage_messageHasNoText"));
+                // get current text from database
+                $currentMessage = $this->messagesAccess->getMessageForTest($this->testObject->getId());
             }
         } elseif (isset($_POST[self::PARAMETER_RESET_MESSAGE])) {
             // reset message and display success message
