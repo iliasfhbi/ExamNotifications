@@ -10,6 +10,7 @@ setMessage_message_submit#:#Speichern
 setMessage_message_reset#:#Zurücksetzen
 setMessage_messageSet#:#Die Nachricht wurde für die Teilnehmer des Tests gespeichert.
 setMessage_messageReset#:#Die Nachricht wurde zurückgesetzt.
+setMessage_messageHasNoText#:#Die eingegebene Nachricht enthält keinen Text.
 config_header#:#Konfiguration des Klausurbenachrichtigungs-Plugins
 config_saved#:#Die Konfiguration wurde gespeichert.
 config_pollingInterval_outOfBounds#:#Der Wert %s liegt nicht im erlaubten Bereich.

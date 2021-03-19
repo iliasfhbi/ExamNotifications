@@ -78,12 +78,17 @@ class SetMessageGUI
         $successMessageControl = null;
 
         if (isset($_POST[self::PARAMETER_MESSAGE_TEXT])) {
-            // save message text to database and display success message
             $currentMessageText = $_POST[self::PARAMETER_MESSAGE_TEXT];
-            $currentMessage = new NotificationMessage($currentMessageText, $this->currentUser, new DateTime(), MessageTypes::DANGER);
 
-            $this->messagesAccess->setMessageForTest($this->testObject->getId(), $currentMessage);
-            $successMessageControl = $uiFactory->messageBox()->success($this->plugin->txt("setMessage_messageSet"));
+            if(is_string($currentMessageText) && trim($currentMessageText)) {
+                // save message text to database and display success message
+                $currentMessage = new NotificationMessage($currentMessageText, $this->currentUser, new DateTime(), MessageTypes::DANGER);
+                $this->messagesAccess->setMessageForTest($this->testObject->getId(), $currentMessage);
+                $successMessageControl = $uiFactory->messageBox()->success($this->plugin->txt("setMessage_messageSet"));
+            } else {
+                // there is no text in this message, could be some spaces or similar
+                $successMessageControl = $uiFactory->messageBox()->failure($this->plugin->txt("setMessage_messageHasNoText"));
+            }
         } elseif (isset($_POST[self::PARAMETER_RESET_MESSAGE])) {
             // reset message and display success message
             $this->messagesAccess->setMessageForTest($this->testObject->getId(), new NotificationMessage("", $this->currentUser, new DateTime()));
