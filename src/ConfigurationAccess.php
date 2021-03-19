@@ -3,7 +3,11 @@
 
 namespace ExamNotifications;
 
-
+/**
+ * Implementation for accessing and modifying the configuration values
+ *
+ * @package ExamNotifications
+ */
 class ConfigurationAccess implements ConfigurationAccessInterface
 {
     private $dic;

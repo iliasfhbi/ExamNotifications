@@ -5,10 +5,9 @@ require_once __DIR__ . "/../vendor/autoload.php";
 use ILIAS\DI\Container;
 
 /**
- * User interface hook class
+ * User interface hook class responsible for injecting the user interfaces of the plugin into the overall ILIAS user interface
  *
  * @author Sebastian Otte <sebastian.otte@fh-bielefeld.de>
- * @version $Id$
  * @ingroup ServicesUIComponent
  */
 class ilExamNotificationsUIHookGUI extends ilUIHookPluginGUI
@@ -23,6 +22,10 @@ class ilExamNotificationsUIHookGUI extends ilUIHookPluginGUI
      */
     private $plugin;
 
+    /**
+     * ilExamNotificationsUIHookGUI constructor.
+     * @global $DIC
+     */
     public function __construct()
     {
         global $DIC;
@@ -33,7 +36,10 @@ class ilExamNotificationsUIHookGUI extends ilUIHookPluginGUI
     }
 
     /**
-     * Modify HTML output of GUI elements. Modifications modes are:
+     * Modify HTML output of GUI elements.
+     *
+     * Modifications modes are:
+     *
      * - ilUIHookPluginGUI::KEEP (No modification)
      * - ilUIHookPluginGUI::REPLACE (Replace default HTML with your HTML)
      * - ilUIHookPluginGUI::APPEND (Append your HTML to the default HTML)

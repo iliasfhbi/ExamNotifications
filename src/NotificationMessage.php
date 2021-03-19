@@ -5,8 +5,16 @@ namespace ExamNotifications;
 use DateTime;
 use ilObjUser;
 
+/**
+ * Notification message
+ * @package ExamNotifications
+ */
 class NotificationMessage
 {
+    /**
+     * Maximum length of message text in characters
+     * @var int
+     */
     const MAXIMUM_LENGTH = 200;
 
     /**
@@ -23,6 +31,8 @@ class NotificationMessage
     private $timestamp;
 
     /**
+     * Message type
+     * @link MessageTypes
      * @var int
      */
     private $type;
@@ -52,6 +62,7 @@ class NotificationMessage
 
     /**
      * @param string $text
+     * @return void
      */
     public function setText(string $text)
     {
@@ -68,6 +79,7 @@ class NotificationMessage
 
     /**
      * @param ilObjUser $sender
+     * @return void
      */
     public function setSender(ilObjUser $sender)
     {
@@ -84,6 +96,7 @@ class NotificationMessage
 
     /**
      * @param DateTime $timestamp
+     * @return void
      */
     public function setTimestamp(DateTime $timestamp)
     {
@@ -91,7 +104,7 @@ class NotificationMessage
     }
 
     /**
-     * @return int
+     * @return int message type
      */
     public function getType(): int
     {
@@ -99,7 +112,8 @@ class NotificationMessage
     }
 
     /**
-     * @param int $type
+     * @param int $type message type
+     * @return void
      */
     public function setType(int $type)
     {

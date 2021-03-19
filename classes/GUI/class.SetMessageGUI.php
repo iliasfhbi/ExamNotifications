@@ -7,13 +7,20 @@ use ExamNotifications\NotificationMessage;
 use ILIAS\DI\Container;
 
 /**
- * Class SetMessageGUI
+ * GUI class for setting a notification message for the participants of a test
+ *
  * @ilCtrl_isCalledBy SetMessageGUI: ilTestParticipantsTableGUI
  * @ilCtrl_Calls SetMessageGUI: CurrentMessagePreviewGUI
  */
 class SetMessageGUI
 {
+    /**
+     * @var string
+     */
     const PARAMETER_MESSAGE_TEXT = "messageText";
+    /**
+     * @var string
+     */
     const PARAMETER_RESET_MESSAGE = "reset";
 
     /**
@@ -41,6 +48,11 @@ class SetMessageGUI
      */
     private $messagesAccess;
 
+    /**
+     * SetMessageGUI constructor.
+     * @param int $testObjectRefId
+     * @global $DIC
+     */
     public function __construct(int $testObjectRefId)
     {
         global $DIC;

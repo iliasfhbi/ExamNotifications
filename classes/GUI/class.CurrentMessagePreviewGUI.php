@@ -3,6 +3,9 @@
 use ExamNotifications\NotificationMessage;
 use ILIAS\DI\Container;
 
+/**
+ * GUI class for rendering a preview of a notification message
+ */
 class CurrentMessagePreviewGUI
 {
     /**
@@ -20,6 +23,11 @@ class CurrentMessagePreviewGUI
      */
     private $message;
 
+    /**
+     * CurrentMessagePreviewGUI constructor.
+     * @param NotificationMessage $message
+     * @global $DIC
+     */
     public function __construct(NotificationMessage $message)
     {
         global $DIC;

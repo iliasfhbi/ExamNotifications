@@ -10,7 +10,6 @@ require_once __DIR__ . "/../vendor/autoload.php";
  * Plugin configuration GUI
  *
  * @author Sebastian Otte <sebastian.otte@fh-bielefeld.de>
- * @version $Id$
  * @ingroup ServicesUIComponent
  */
 class ilExamNotificationsConfigGUI extends ilPluginConfigGUI

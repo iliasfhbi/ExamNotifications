@@ -9,12 +9,16 @@ use ExamNotifications\MessagesAccessInterface;
 use ILIAS\DI\Container;
 
 /**
- * Class DisplayMessageGUI
+ * GUI class for displaying notification messages to test participants
+ *
  * @ilCtrl_isCalledBy DisplayMessageGUI: ilTestPlayerFixedQuestionSetGUI, ilTestPlayerRandomQuestionSetGUI
  * @ilCtrl_isCalledBy DisplayMessageGUI: ilUIPluginRouterGUI
  */
 class DisplayMessageGUI
 {
+    /**
+     * @var string
+     */
     const CMD_GET_MESSAGE = "getMsg";
 
     /**
@@ -42,6 +46,11 @@ class DisplayMessageGUI
      */
     private $configurationAccess;
 
+    /**
+     * DisplayMessageGUI constructor.
+     * @param int $testObjectRefId if not pvovided, value of $_GET["ref_id"] is used
+     * @global $DIC
+     */
     public function __construct(int $testObjectRefId = 0)
     {
         global $DIC;

@@ -4,6 +4,9 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 include_once("./Services/UIComponent/classes/class.ilUserInterfaceHookPlugin.php");
 
+/**
+ * Plugin class
+ */
 class ilExamNotificationsPlugin extends ilUserInterfaceHookPlugin {
 
 

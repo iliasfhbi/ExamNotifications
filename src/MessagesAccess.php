@@ -6,6 +6,13 @@ use DateTime;
 use ILIAS\DI\Container;
 use ilObjUser;
 
+/**
+ * Implementation for accessing and modifying the message set for a test
+ *
+ * @link ui_uihk_exnot_tstmsg
+ *
+ * @package ExamNotifications
+ */
 class MessagesAccess implements MessagesAccessInterface
 {
     /**
@@ -13,6 +20,10 @@ class MessagesAccess implements MessagesAccessInterface
      */
     private $dic;
 
+    /**
+     * MessagesAccess constructor.
+     * @global $DIC
+     */
     public function __construct()
     {
         global $DIC;
@@ -53,6 +64,11 @@ class MessagesAccess implements MessagesAccessInterface
         return null;
     }
 
+    /**
+     * Returns if a message has been set for a test
+     * @param int $testObjectId the object id of the test object that shall be checked
+     * @return bool
+     */
     private function testHasDatabaseEntry(int $testObjectId): bool
     {
         $statement = $this->dic->database()->queryF(

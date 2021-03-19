@@ -3,7 +3,11 @@
 
 namespace ExamNotifications;
 
-
+/**
+ * Operations for accessing and modifying the configuration values
+ *
+ * @package ExamNotifications
+ */
 interface ConfigurationAccessInterface
 {
     /**
@@ -13,6 +17,7 @@ interface ConfigurationAccessInterface
 
     /**
      * @param int $pollingInterval Polling interval in seconds
+     * @return void
      */
     function setPollingInterval(int $pollingInterval);
 }
