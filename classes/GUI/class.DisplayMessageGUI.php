@@ -118,12 +118,19 @@ class DisplayMessageGUI
 
             $message = $this->messagesAccess->getMessageForTest($this->testObject->getId());
 
-            $response = [
-                "text" => htmlspecialchars($message->getText()), // escape special characters in message text
-                "type" => $message->getType(),
-                "sender" => $message->getSender()->getFullname(),
-                "timestamp" => $message->getTimestamp()->format("c") // ISO 8601 date
-            ];
+            // check if message has been set yet
+            if($message) {
+                // messages has been set, return its components
+                $response = [
+                    "text" => htmlspecialchars($message->getText()), // escape special characters in message text
+                    "type" => $message->getType(),
+                    "sender" => $message->getSender()->getFullname(),
+                    "timestamp" => $message->getTimestamp()->format("c") // ISO 8601 date
+                ];
+            } else {
+                // no message has been set yet
+                $response = [];
+            }
 
             echo json_encode($response);
             exit;
