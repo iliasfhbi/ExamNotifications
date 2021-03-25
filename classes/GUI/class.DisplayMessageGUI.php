@@ -48,7 +48,7 @@ class DisplayMessageGUI
 
     /**
      * DisplayMessageGUI constructor.
-     * @param int $testObjectRefId if not pvovided, value of $_GET["ref_id"] is used
+     * @param int $testObjectRefId if not provided, value of $_GET["ref_id"] is used
      * @global $DIC
      */
     public function __construct(int $testObjectRefId = 0)
