@@ -41,7 +41,7 @@ Ausgehend vom ILIAS-Verzeichnis
 ```bash
 mkdir -p Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
-git clone https://gitlab.fh-bielefeld.de/ilias/ExamNotifications.git ExamNotifications
+git clone https://github.com/iliasfhbi/ExamNotifications.git ExamNotifications
 ```
 
 ## Konfiguration
