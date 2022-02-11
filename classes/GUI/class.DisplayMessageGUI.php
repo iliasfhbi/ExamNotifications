@@ -27,7 +27,7 @@ class DisplayMessageGUI
     private $dic;
 
     /**
-     * @var ilObject
+     * @var ilObjTest
      */
     private $testObject;
 
@@ -93,7 +93,7 @@ class DisplayMessageGUI
 
         // setup message container
         $messageContainerTemplate = $this->plugin->getTemplate("tpl.displayMessageContainer.html");
-        $messageContainerTemplate->setVariable("DUMMY"); // without setting a variable, the html does not get parsed
+        $messageContainerTemplate->setVariable("cssClasses", $this->getContainerCssClasses());
         $output = $messageContainerTemplate->get();
 
         // setup script
@@ -135,5 +135,19 @@ class DisplayMessageGUI
             echo json_encode($response);
             exit;
         }
+    }
+
+    private function getContainerCssClasses() : string {
+        $classes = "";
+        // workaround for ILIAS 5.4: make css compatible by adding a class
+        if(version_compare(ILIAS_VERSION_NUMERIC, "6.0") < 0) {
+            $classes .= "ui-uihk-exnot-ilias54";
+        }
+        // add class if kiosk mode is enabled to adjust padding
+        if($this->testObject->getKioskMode()) {
+            $classes .= " ui-uihk-exnot-kiosk";
+        }
+
+        return trim($classes);
     }
 }

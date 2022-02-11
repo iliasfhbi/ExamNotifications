@@ -30,7 +30,7 @@ Die Nachricht wird in der Ansicht zur Bearbeitung einer Frage regelmäßig im Hi
 
 ## Kompatibilität
 
-Das Plugin wurde ausschließlich mit Version 5.4 getestet.
+Das Plugin wurde mit Version 5.4 getestet und für Version 7 angepasst.
 
 **Empfehlung:** im Testobjekt sollte im Reiter _Einstellungen_ unter _Durchführung: Steuerung Testdurchlauf_ die _Prüfungsansicht_ aktiviert werden, damit die Darstellung in Kombination mit der ILIAS-Werkzeugleiste am oberen Rand harmoniert.
 

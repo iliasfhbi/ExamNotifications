@@ -1,24 +1,33 @@
-/* display container on top of page content */
+/* base configuration for displayMessage container */
 #ui-uihk-exnot-displayMessage-container {
-    position: fixed;
+    position: relative; /* no overlay because of side navigation */
     z-index: 1050; /* make sure the messages are displayed on top of the toolbar and other elements */
     width: 100%;
 }
 
+/* in kiosk mode */
+/* using the examination view, the message is displayed across the whole screen */
+#ui-uihk-exnot-displayMessage-container.ui-uihk-exnot-kiosk {
+    position: fixed; /* display container on top of page content */
+    padding-right: 30px; /* override container margins */
+}
+
+/* 5.4 */
 /* if the examination view is not used, we need to set a maximum width so the close button is visible */
-body.std #ui-uihk-exnot-displayMessage-container {
+#ui-uihk-exnot-displayMessage-container.ui-uihk-exnot-ilias54 {
+    position: fixed; /* display container on top of page content */
     max-width: 1400px; /* use same maximum width as .ilContainerWidth */
     padding-right: 60px; /* override container margins */
 }
 
 @media only screen and (max-width: 767px) {
-    body.std #ui-uihk-exnot-displayMessage-container {
+    #ui-uihk-exnot-displayMessage-container.ui-uihk-exnot-ilias54 {
         padding-right: 30px; /* override container margins */
     }
 }
 
-/* using the examination view, the message is displayed across the whole screen */
-body.kiosk #ui-uihk-exnot-displayMessage-container {
+/* 5.4 in kiosk mode */
+#ui-uihk-exnot-displayMessage-container.ui-uihk-exnot-ilias54.ui-uihk-exnot-kiosk {
     padding-right: 4em; /* override container margins */
 }
 
