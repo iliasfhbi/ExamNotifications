@@ -1,21 +1,21 @@
 {
-  "name": "fhbielefeld/examnotifications",
-  "description": "Plugin for Notifications during Exams",
-  "minimum-stability": "stable",
-  "license": "proprietary",
-  "authors": [
-    {
-      "name": "Sebastian Otte",
-      "email": "sebastian.otte@fh-bielefeld.de"
+    "name": "hsbi/examnotifications",
+    "description": "Plugin for Notifications during Exams",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Felix Kuemmel",
+            "email": "felix.kuemmel@hsbi.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "HSBI\\ExamNotifications\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=7.0",
+        "ext-json": "*"
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "ExamNotifications\\": "src"
-    }
-  },
-  "require": {
-    "php": ">=7.0",
-    "ext-json": "*"
-  }
 }

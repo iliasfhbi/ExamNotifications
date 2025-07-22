@@ -1,10 +1,12 @@
 <?php
 $id = "exnot";
 
-$version = "1.1.0";
+// For more information about the version convention see README.md
+// {ILIAS-Major-Version}.{ILIAS-Minor-Version}.{ILIAS-Patch-Version}{last three digits plugin version}
+$version = "9.0.0000";
 
-$ilias_min_version = "5.4.0";
-$ilias_max_version = "7.999";
+$ilias_min_version = "9.0";
+$ilias_max_version = "9.999";
 
-$responsible = "Sebastian Otte";
-$responsible_mail = "ilias@fh-bielefeld.de";
+$responsible = "Felix Kuemmel";
+$responsible_mail = "ilias@hsbi.de";
