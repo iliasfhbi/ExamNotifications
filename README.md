@@ -2,50 +2,158 @@
 
 ILIAS-Plugin für das Senden von Benachrichtigungen an Studierende während einer Prüfung
 
-## Nutzen
+## Inhalt
 
-Während einer Prüfung können die Prüfenden den Studierenden Nachrichten zukommen lassen.
-Die Funktion muss dabei nicht über Drittprogramme wie zum Beispiel Zoom bereitgestellt werden; sie ist in ILIAS integriert. Für den Text der Nachricht stehen 200 Zeichen zur Verfügung. Zusätzlich werden der Name des Absenders und die Uhrzeit ausgegeben, zu der die Nachricht festgelegt wurde.
-Falls eine Nachricht festgelegt wurde, wird diese dem Prüfenden in einer Vorschau angezeigt.
-
-Die Nachricht wird als andere Elemente überlagerndes Banner angezeigt, damit die Studierenden auf die Nachricht aufmerksam werden. Gleichzeitig ist es weniger aufdringlich als ein modales Dialogfenster und kann mit einem Klick geschlossen werden. Beim Aufrufen der nächsten Frage werden die Studierenden durch ein erneutes Anzeigen an die Nachricht erinnert.
-
-## Bedienung
-
-### Für den Prüfenden
-Die Nachricht wird pro Testobjekt auf dem Reiter _Dashboard_ eingestellt. Es kann immer nur eine Nachricht zur gleichen Zeit aktiv sein. Sobald eine Nachricht eingestellt wurde, kann diese dort auch zurückgesetzt werden.
-
-*Beispiel für eine Nachricht im Dashboard:*
-
-![Beispiel für eine Nachricht im Dashboard](doc/images/Example_Dashboard.png)
+[TOC]
 
 ---
 
-### Für die Studierenden
-Die Nachricht wird in der Ansicht zur Bearbeitung einer Frage regelmäßig im Hintergrund abgefragt. Falls eine Nachricht eingestellt wurde, wird diese angezeigt.
+## 1. Kompatibilität
 
-*Beispiel für eine Nachricht in der Prüfungsansicht:*
+Das Plugin wurde mit Version 9.10 getestet.
 
-![Beispiel für eine Nachricht in der Prüfungsansicht](doc/images/Example_ExamView.png)
+_[Inhaltsverzeichnis](#inhalt)_
 
-## Kompatibilität
+---
 
-Das Plugin wurde mit Version 5.4 getestet und für Version 7 angepasst.
+## 2. Nutzen
 
-**Empfehlung:** im Testobjekt sollte im Reiter _Einstellungen_ unter _Durchführung: Steuerung Testdurchlauf_ die _Prüfungsansicht_ aktiviert werden, damit die Darstellung in Kombination mit der ILIAS-Werkzeugleiste am oberen Rand harmoniert.
+Während einer Prüfung können die Prüfenden den Studierenden Nachrichten zukommen lassen.
+Die Funktion muss dabei nicht über Drittprogramme wie zum Beispiel Zoom bereitgestellt werden; sie ist in ILIAS integriert. Für den Text der Nachricht stehen 200 Zeichen zur Verfügung. Zusätzlich wird der Name des Tests und die Uhrzeit ausgegeben, zu der die Nachricht festgelegt wurde.
 
-## Installation
+Die Nachricht wird als andere Elemente überlagerndes Banner angezeigt, damit die Studierenden auf die Nachricht aufmerksam werden **oder** als *Toast* mit einer *Benachrichtigung* im ILIAS Benachrichtigungs-Center. Dabei sind beide Varianten weniger aufdringlich als ein modales Dialogfenster und können mit einem Klick geschlossen werden.
+
+_[Inhaltsverzeichnis](#inhalt)_
+
+----
+
+## 3. Bedienung
+
+### 3.1 Für den Prüfenden
+Die Nachricht wird pro Testobjekt eingestellt, über einen Hauptmenüpunkt der nur innerhalb eines Testobjekts erschient, wenn Schreibrechte für das Testobjekt vorhanden sind. Es können mehrere Nachrichten zur gleichen Zeit aktiv sein. Sobald eine Nachricht eingestellt wurde, kann der Verlauf dort auch gelöscht oder exportiert werden.
+
+---
+
+### 3.2 Für die Studierenden
+Die Nachricht wird in der Ansicht zur Bearbeitung einer Frage minütlich im Hintergrund abgefragt. Falls eine Nachricht eingestellt wurde, wird diese für alle angezeigt, die einen Testlauf begonnen haben und noch nicht abgeschlossen haben. Die Nachricht kann vom Studierenden über das **x** geschlossen werden und wird **nicht** mehr angezeigt.
+
+_[Inhaltsverzeichnis](#inhalt)_
+
+----
+
+## 4. Installation
 
 Ausgehend vom ILIAS-Verzeichnis
 
 ```bash
 mkdir -p Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
-git clone https://github.com/iliasfhbi/ExamNotifications.git ExamNotifications
+git clone -b ILIAS_9.0.0 --recurse-submodules https://gitlab.fh-bielefeld.de/ilias/ExamNotifications.git ExamNotifications
+# Zurück ins ILIAS-Verzeichnis:
+cd ../../../../../../../
+sudo -uwww-data composer du
+# Der Output von composer du sollte folgende Zeile enthalten:
+# Generated autoloader for \HSBI\PluginCoreFunctions v9.0.0.0
 ```
 
-## Konfiguration
+_[Inhaltsverzeichnis](#inhalt)_
 
-### Abfragezeit
+----
 
-Die Abfragezeit (=Zeit, die maximal zwischen zwei Nachrichtenabfragen vergeht) kann im Konfigurationsbereich des Plugins auf einen Wert zwischen 5 und 300 Sekunden eingestellt werden.
+## 5. Konfiguration
+
+### 5.1 Einbindungsart
+
+In der Plugin-Konfiguration kann zwischen folgenden Einbindungsarten der Benachrichtigungen gewählt werden:
+
+- Globalscreen Toast + Notification
+- Als ein mit JavaScript eingebettetes rotes Banner
+
+_[Inhaltsverzeichnis](#inhalt)_
+
+-----
+
+## 6. Submodule
+
+| Name                  | Version    | Lokaler Einbindungspfad                                      | URL                                                          |
+| --------------------- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| plugin-core-functions | `v9.0.0.4` | [`submodule/plugin-core-functions`](submodule/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v9.0.0.0?ref_type=tags |
+
+_[Inhaltsverzeichnis](#inhalt)_
+
+-----
+## 7. Branches
+
+Eine neue Branch wird immer dann angelegt, wenn das Plugin aufgrund von Änderungen am ILIAS-Code nicht mehr funktioniert. Die Branch heißt dann wie die ILIAS-Version, die die Änderungen verursacht. Z.B.: `ILIAS_9.6.0`
+
+_[Inhaltsverzeichnis](#inhalt)_
+
+-----
+
+## 8. Tags / Versionierung
+
+Ein neuer Tag wird dann gesetzt, wenn das Plugin eine neue Funktion/Bug-Fix hinzugefügt wurde oder wenn das Plugin an eine neue ILIAS-Version angepasst wurde. 
+
+### 8.1 Aufbau Versions Nummerierung
+
+Die ersten 3 Zahlen geben die minimale ILIAS Version an mit der das Plugin funktioniert und die letzte Zahl gibt die  Plugin Version für diese ILIAS Version an. Beispiel:
+
+Ausgangs Tag/Version: `v9.0.0.4`
+
+ILIAS-Version: `9.0.0`
+
+Plugin-Version für ILIAS-Version (`9.0.0`): `4`
+
+Da ILIAS nur 3-teiligen Versionen unterstützt, wird in der [plugin.php](plugin.php)-Version die letzten drei Stellen des 3. Teils als  Plugin-Version verwendet: `9.0.0004`
+
+### 8.2 Neue Funktion/Bug-Fix
+
+#### 8.2.1 Tags/Versionen für eine bestimmte ILIAS-Version vorhanden
+
+Wird eine neue Funktion/Bug-Fix für eine bestimmte ILIAS-Version hinzugefügt, wird die letzte Zahl der letzten Version erhöht. Beispiel:
+
+ILIAS-Version: `9.0.0`
+
+Letzter Tag/Version für ILIAS-Version (`9.0.0`): `v9.0.0.4`
+
+Neuer Tag/Version: `v9.0.0.5`
+
+Neue [plugin.php](plugin.php)-Version: `9.0.0005`
+
+#### 8.2.2 Tags/Versionen für eine bestimmte ILIAS-Version nicht vorhanden
+
+Ist noch kein Tag/Version für eine ILIAS-Version vorhanden, ist die letzte Zahl der Version `0`. Beispiel:
+
+ILIAS-Version: `9.0.1`
+
+Letzter Tag/Version für ILIAS-Version (`9.0.1`): `nicht vorhanden`
+
+Neuer Tag/Version: `v9.0.1.0`
+
+Neue [plugin.php](plugin.php)-Version: `9.0.1000`
+
+### 8.3 Anpassung an eine neue ILIAS-Version
+
+Da noch kein Tag/Version für eine neue ILIAS-Version vorhanden sein kann, ist die letzte Zahl der Version `0`. Beispiel:
+
+ILIAS-Version: `9.2.1`
+
+Neuer Tag/Version: `v9.2.1.0`
+
+Neue [plugin.php](plugin.php)-Version: `9.2.1000`
+
+_[Inhaltsverzeichnis](#inhalt)_
+
+-----
+
+## 9. Quellcode Dokumentation
+
+### 9.1 Mit PHP-Documentor generierte Dokumentation
+
+[doc/api/index.html](doc/api/index.html)
+
+### 9.2 UML Klassendiagramm
+
+<img src="doc/api/graphs/classes.svg" alt="see doc/api/graphs/classes.svg"/>
+
+_[Inhaltsverzeichnis](#inhalt)_
