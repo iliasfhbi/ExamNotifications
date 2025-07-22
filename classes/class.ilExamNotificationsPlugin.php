@@ -61,7 +61,15 @@ class ilExamNotificationsPlugin extends ilUserInterfaceHookPlugin
         $messageDAO = new MessageDAO();
         $messageDAO->dataSource()->create();
         $messageViewedDAO = new MessageViewedDAO($messageDAO);
-        $messageViewedDAO->dataSource()->create();
+        // $messageViewedDAO->dataSource()->create();
+        /*
+         * Because of an missing use definition in ilDBPdoManager::addForeignKey() CASCADE is not available!
+         * A Bug-Fix to enable delete cascading causes this exception. Remove try-catch with the line above if the bug is fixed.
+         */
+        try {
+            $messageViewedDAO->dataSource()->create();
+        } catch (Exception $e) {
+        }
         parent::install();
     }
 
@@ -97,7 +105,16 @@ class ilExamNotificationsPlugin extends ilUserInterfaceHookPlugin
             $messageDAO = new MessageDAO();
             $messageViewedDAO = new MessageViewedDAO($messageDAO);
             $messageDAO->dataSource()->create();
-            $messageViewedDAO->dataSource()->create();
+            
+            // $messageViewedDAO->dataSource()->create();
+            /*
+             * Because of an missing use definition in ilDBPdoManager::addForeignKey() CASCADE is not available!
+             * A Bug-Fix to enable delete cascading causes this exception. Remove try-catch with the line above if the bug is fixed.
+             */
+            try {
+                $messageViewedDAO->dataSource()->create();
+            } catch (Exception $e) {
+            }
             $pluginConfigAccess = new PluginConfigAccess($this->getId());
             $pluginConfigAccess->deleteAll();
         }
