@@ -1,123 +1,117 @@
 <?php
 use HSBI\ExamNotifications\PLog;
+use HSBI\ExamNotifications\Control\ExamNotificationsGUI\DefineMessagesCommand;
 use HSBI\ExamNotifications\DAO\MessageDAO;
 use HSBI\ExamNotifications\DAO\MessageViewedDAO;
 use HSBI\ExamNotifications\Model\PluginConfigID;
-use HSBI\ExamNotifications\View\MainMenu\EntryProvider;
-use Pimple\Exception\UnknownIdentifierException;
-use HSBI\PluginCoreFunctions\Paths;
-use HSBI\PluginCoreFunctions\Config\Plugin\Control\PluginConfigAccess;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\PCFIDIC;
-use ILIAS\Data\Version;
+use HSBI\PluginCoreFunctions\MainMenu\Model\Entries;
+use HSBI\PluginCoreFunctions\MainMenu\Model\Entry;
+use HSBI\PluginCoreFunctions\MainMenu\Model\Link;
+use HSBI\PluginCoreFunctions\PluginMainClass\UIHookPlugin;
+use HSBI\PluginCoreFunctions\PluginMainClass\Registration\AdditionalGlobalJavaScriptRegistration;
+use HSBI\PluginCoreFunctions\PluginMainClass\Registration\ContainingPCFPathRegistration;
+use HSBI\PluginCoreFunctions\PluginMainClass\Registration\DAORegistration;
+use HSBI\PluginCoreFunctions\PluginMainClass\Registration\MainMenuEntriesRegistration;
+use HSBI\PluginCoreFunctions\PluginMainClass\Registration\PluginMigrationRegistration;
+use HSBI\PluginCoreFunctions\UIComponents\UIIcon;
+use HSBI\PluginCoreFunctions\UIComponents\Icon\IconSize;
+use HSBI\PluginCoreFunctions\UIComponents\Icon\StandardIcon;
+use HSBI\ExamNotifications\Control\Migration\Migration_From_1_1_0;
+use HSBI\ExamNotifications\Control\Migration\Migration_From_9_0_0000;
 
 require_once __DIR__ . '/../submodule/plugin-core-functions/autoloader/Autoloader.php';
 require_once __DIR__ . "/../vendor/autoload.php";
 
-include_once ("./Services/UIComponent/classes/class.ilUserInterfaceHookPlugin.php");
-
 /**
- * Plugin class
+ * Plugin main class of ExamNotifications
  */
-class ilExamNotificationsPlugin extends ilUserInterfaceHookPlugin
+class ilExamNotificationsPlugin extends UIHookPlugin
 {
 
-    public function __construct(ilDBInterface $db, ilComponentRepositoryWrite $component_repository, string $id)
+    /**
+     *
+     * {@inheritdoc}
+     * @see ContainingPCFPathRegistration::registerContainingPCFPath()
+     */
+    protected function registerContainingPCFPath(): string
     {
-        parent::__construct($db, $component_repository, $id);
         PLog::debug()->parameter();
-        if ($this->isActive()) {
-            global $DIC;
-            try {
-                // Registers CourseCreationMainMenuEntryProvider at the GlobalScreen-service.
-                // The GlobalScreen-service adds the entry (created by CourseCreationMainMenuEntryProvider)
-                // to the main menu.
-                $this->getGlobalScreenProviderCollection()->setMainBarProvider((new EntryProvider($DIC, $this)));
-            } catch (UnknownIdentifierException $unknownIdentifierException) {
-                // Ignore if global_screen is the reason
-                if ($unknownIdentifierException->getMessage() != 'Identifier "global_screen" is not defined.')
-                    throw $unknownIdentifierException;
-            }
-
-            if ($_SERVER['PHP_SELF'] === '/ilias.php') {
-                $pluginConfigAccess = new PluginConfigAccess($this->id);
-                if ($pluginConfigAccess->getValue(PluginConfigID::PRESENTATION_TYPE, PluginConfigID::PRESENTATION_TYPE_JS->name) === PluginConfigID::PRESENTATION_TYPE_JS->name)
-                    // Add/Update version to ensure that the cached Js will be requested again on changes.
-                    $DIC->globalScreen()
-                        ->layout()
-                        ->meta()
-                        ->addJs("Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ExamNotifications/src/ExamNotificationV1.js");
-            }
-        }
-        PLog::debug()->return();
+        return PLog::debug()->return(__DIR__ . '/../submodule/plugin-core-functions');
     }
 
     /**
      *
      * {@inheritdoc}
-     * @see ilPlugin::install()
+     * @see DAORegistration::registerDAOs()
      */
-    public function install(): void
+    protected function registerDAOs(): array
     {
-        $messageDAO = new MessageDAO();
-        $messageDAO->dataSource()->create();
-        $messageViewedDAO = new MessageViewedDAO($messageDAO);
-        // $messageViewedDAO->dataSource()->create();
-        /*
-         * Because of an missing use definition in ilDBPdoManager::addForeignKey() CASCADE is not available!
-         * A Bug-Fix to enable delete cascading causes this exception. Remove try-catch with the line above if the bug is fixed.
-         */
-        try {
-            $messageViewedDAO->dataSource()->create();
-        } catch (Exception $e) {
-        }
-        parent::install();
-    }
-
-    /**
-     *
-     * {@inheritdoc}
-     * @see ilPlugin::uninstall()
-     */
-    public function uninstall(): bool
-    {
+        PLog::debug()->parameter();
         $messageDAO = new MessageDAO();
         $messageViewedDAO = new MessageViewedDAO($messageDAO);
-        $messageViewedDAO->dataSource()->delete();
-        $messageDAO->dataSource()->delete();
-        $pluginConfigAccess = new PluginConfigAccess($this->getId());
-        $pluginConfigAccess->deleteAll();
-        return parent::uninstall();
+        return PLog::debug()->return([
+            $messageDAO,
+            $messageViewedDAO
+        ]);
     }
 
     /**
      *
      * {@inheritdoc}
-     * @see ilPlugin::update()
+     * @see PluginMigrationRegistration::registerPluginMigrations()
      */
-    public function update(): bool
+    protected function registerPluginMigrations(): array
     {
-        $currentVersion = $this->getPluginInfo()->getCurrentVersion();
-        if ($currentVersion === null)
-            return parent::update();
-        if ($currentVersion->isSmallerThanOrEquals(new Version('1.1.0'))) {
-            global $DIC;
-            $DIC->database()->dropTable('ui_uihk_exnot_tstmsg', false);
-            $messageDAO = new MessageDAO();
-            $messageViewedDAO = new MessageViewedDAO($messageDAO);
-            $messageDAO->dataSource()->create();
-            
-            // $messageViewedDAO->dataSource()->create();
-            /*
-             * Because of an missing use definition in ilDBPdoManager::addForeignKey() CASCADE is not available!
-             * A Bug-Fix to enable delete cascading causes this exception. Remove try-catch with the line above if the bug is fixed.
-             */
-            try {
-                $messageViewedDAO->dataSource()->create();
-            } catch (Exception $e) {
-            }
-            $pluginConfigAccess = new PluginConfigAccess($this->getId());
-            $pluginConfigAccess->deleteAll();
+        PLog::debug()->parameter();
+        return PLog::debug()->return([
+            new Migration_From_1_1_0(),
+            new Migration_From_9_0_0000()
+        ]);
+    }
+
+    /**
+     *
+     * {@inheritdoc}
+     * @see MainMenuEntriesRegistration::registerMainMenuEntries()
+     */
+    protected function registerMainMenuEntries(): Entries
+    {
+        PLog::debug()->parameter();
+
+        $refID = PCFIDIC::CTRL()->getRefID();
+        $entries = new Entries();
+        if ($refID === null)
+            return PLog::debug()->return($entries);
+        else {
+            // Gets the link to the ExamNotificationsGUI
+            $target = PCFIDIC::CTRL()->getLinkTargetByClass(ExamNotificationsGUI::class, DefineMessagesCommand::getCmd());
+            // passes the ref_id of the test to ExamNotificationsGUI
+            // passes view_control/input_0/input_1=0&view_control/input_0/input_2=25&view_control/input_3/input_4=timestamp&view_control/input_3/input_5=DESC so that the messages are sorted after thier timestamp
+            $target .= "&ref_id=$refID&view_control/input_0/input_1=0&view_control/input_0/input_2=25&view_control/input_3/input_4=timestamp&view_control/input_3/input_5=DESC";
+            $link = new Link($target);
+            $title = self::instance()->txt("pluginName");
+            $accessManagerClosure = PCFIDIC::Objects()->Test()->hasUserWritePermission(...);
+            $uiIcon = new UIIcon(StandardIcon::ADMINISTRATIVE_NOTIFICATIONS, $title, IconSize::SMALL, false);
+            $entry = new Entry($title, $link, $accessManagerClosure, $accessManagerClosure, $uiIcon);
+            $entries->setEntries($entry);
+            return PLog::debug()->return($entries);
         }
-        return parent::update();
+    }
+
+    /**
+     *
+     * {@inheritdoc}
+     * @see AdditionalGlobalJavaScriptRegistration::registerAdditionalGlobalJavaScripts()
+     */
+    protected function registerAdditionalGlobalJavaScripts(): array
+    {
+        PLog::debug()->parameter();
+        $additionalGlobalJavaScripts = [];
+        $pluginConfigAccess = self::instance()->getUiHookPluginInfo()->getPluginConfigAccess();
+        if ($pluginConfigAccess->getValue(PluginConfigID::PRESENTATION_TYPE, PluginConfigID::PRESENTATION_TYPE_JS->name) === PluginConfigID::PRESENTATION_TYPE_JS->name)
+            // Add/Update version add the end to ensure that the cached Js will be requested again on changes.
+            $additionalGlobalJavaScripts[] = "Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ExamNotifications/src/ExamNotificationV1.js";
+        return PLog::debug()->return($additionalGlobalJavaScripts);
     }
 }
