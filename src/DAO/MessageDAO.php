@@ -78,63 +78,7 @@ class MessageDAO extends TupleBasedObjectCRUDController
         $this->text = new FieldDefinition('text', $dataSourceId, 'text', length: 200);
         $recordDefinition->setFieldDefinitions($this->id, $this->testReferenceId, $this->senderUserId, $this->timestamp, $this->text);
         $dataSource = new DataSource($recordDefinition, $dataSourceId);
-        // $tupleCRUD = new TupleCRUD($dataSource);
-        /*
-         * Because of an missing use definition in ilDBPdoManager::addForeignKey() CASCADE is not available!
-         * So that this anonymous class enables to delete cascading. Remove this with the line above if the bug is fixed.
-         */
-        $tupleCRUD = new class($dataSource, $this->id, new MessageViewedDAO($this)) extends TupleCRUD {
-
-            /**
-             *
-             * @var FieldDefinition
-             */
-            private FieldDefinition $id;
-
-            /**
-             *
-             * @var MessageViewedDAO
-             */
-            private MessageViewedDAO $messageViewedDAO;
-
-            /**
-             * Constructs an new anonymous instance of TupleCRUD.
-             *
-             * @param DataSource $dataSource
-             *            The $dataSource of the new TupleCRUD
-             * @param FieldDefinition $id
-             *            The $id of the new TupleCRUD
-             * @param MessageViewedDAO $messageViewedDAO
-             *            The $messageViewedDAO of the new TupleCRUD
-             */
-            public function __construct(DataSource $dataSource, FieldDefinition $id, MessageViewedDAO $messageViewedDAO)
-            {
-                PLog::debug()->parameter();
-                parent::__construct($dataSource);
-                $this->id = $id;
-                $this->messageViewedDAO = $messageViewedDAO;
-                PLog::debug()->return();
-            }
-
-            /**
-             *
-             * {@inheritdoc}
-             * @see TupleCRUD::delete_()
-             */
-            protected function delete_(FilterDefinition $filterDefinition = null, SearchDefinition $searchDefinition = null): int
-            {
-                PLog::debug()->parameter();
-                $idFilterOptions = $this->filterOptions(new FieldSelection($this->id), $filterDefinition, $searchDefinition);
-                /** @var FieldDefinition $messageID*/
-                $messageID = $this->messageViewedDAO->getMessageId();
-                $messageIDFilterDefinition = new FilterDefinition();
-                foreach ($idFilterOptions->getFilterOptions($this->id) as /** @var Field $idFilterField*/
-                $idFilterField)
-                    $messageIDFilterDefinition->addField(ComparisonMode::EQUAL, $messageID->initField($idFilterField->getValue()));
-                $this->messageViewedDAO->delete($messageIDFilterDefinition);
-                return PLog::debug()->return(parent::delete_());
-            }
-        };
+        $tupleCRUD = new TupleCRUD($dataSource);
         return PLog::debug()->return($tupleCRUD);
     }
 

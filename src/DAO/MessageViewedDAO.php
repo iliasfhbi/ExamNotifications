@@ -97,12 +97,7 @@ class MessageViewedDAO extends TupleBasedObjectCRUDController
         $recordDefinition = new RecordDefinition();
         $this->id = new FieldDefinition('id', $dataSourceId, 'integer', isPrimaryKeyFlag: true);
         $this->testReferenceId = new FieldDefinition('test_reference_id', $dataSourceId, 'integer', referencedField: new FieldIdentifier('ref_id', 'object_reference'));
-        //$this->messageId = new FieldDefinition('message_id', $dataSourceId, 'integer', referencedField: new FieldIdentifier($this->messageDAO->getId()->getName(), $this->messageDAO->dataSource()->id()));
-        /*
-         * Because of an missing use definition in ilDBPdoManager::addForeignKey() CASCADE is not available!
-         * So that this anonymous class enables to delete cascading. Remove this with the line above if the bug is fixed.
-         */
-        $this->messageId = new FieldDefinition('message_id', $dataSourceId, 'integer', referencedField: new FieldIdentifier($this->messageDAO->getId()->getName(), 'ui_uihk_exnot_message'));
+        $this->messageId = new FieldDefinition('message_id', $dataSourceId, 'integer', referencedField: new FieldIdentifier($this->messageDAO->getId()->getName(), $this->messageDAO->dataSource()->id()));
         $this->receiverUserId = new FieldDefinition('receiver_user_id', $dataSourceId, 'integer', referencedField: new FieldIdentifier('usr_id', 'usr_data'));
         $this->messageStatus = new FieldDefinition('message_status', $dataSourceId, 'integer');
         $this->messageStatusTimestamp = new FieldDefinition('message_status_timestamp', $dataSourceId, 'timestamp');
