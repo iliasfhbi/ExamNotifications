@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . '/../submodule/plugin-core-functions/autoloader/Autoloader.php';
 
 use HSBI\ExamNotifications\PLog;
 use HSBI\ExamNotifications\Control\ilExamNotificationsConfigGUI\ConfigCommand;
-use HSBI\PluginCoreFunctions\GUI\Class\Control\GUIClassCommandRouterImplementation;
+use HSBI\PluginCoreFunctions\GUI\Class\ConfigGUIClass;
 use HSBI\PluginCoreFunctions\GUI\Class\Model\GUIClassCommandRouter;
 
 /**
@@ -14,9 +15,8 @@ use HSBI\PluginCoreFunctions\GUI\Class\Model\GUIClassCommandRouter;
  * @ingroup ServicesUIComponent
  * @ilCtrl_IsCalledBy ilExamNotificationsConfigGUI: ilObjComponentSettingsGUI
  */
-class ilExamNotificationsConfigGUI extends ilPluginConfigGUI implements GUIClassCommandRouter
+class ilExamNotificationsConfigGUI extends ConfigGUIClass
 {
-    use GUIClassCommandRouterImplementation;
 
     /**
      * {@inheritDoc}
