@@ -9,6 +9,7 @@
             "email": "felix.kuemmel@hsbi.de"
         }
     ],
+	"optimize-autoloader": true,
     "autoload": {
         "psr-4": {
             "HSBI\\ExamNotifications\\": "src"
