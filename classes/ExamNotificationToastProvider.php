@@ -1,6 +1,5 @@
 <?php
 declare(strict_types = 1);
-namespace ILIAS\Example\Provider;
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
@@ -21,8 +20,6 @@ use HSBI\PHPUtilities\CRUD\Model\SortOption;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\PCFIDIC;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\Objects\Test\TestObject;
 use ILIAS\GlobalScreen\Scope\Toast\Provider\AbstractToastProvider;
-use DateTimeImmutable;
-use ilExamNotificationsPlugin;
 use HSBI\PluginCoreFunctions\PluginLoader;
 
 // ./libs/composer/vendor/bin/composer dump-autoload

@@ -13,7 +13,7 @@ use ilExamNotificationsPlugin;
  * Mirgration from ExamNotifications 9.0.0000
  * 
  * @author Felix Kuemmel <felix.kuemmel@hsbi.de>
- * @package HSBI\ExamNotifications\Control\Migration
+ * @package ExamNotifications\Control\Migration
  */
 class Migration_From_9_0_0000 extends PluginMigration
 {

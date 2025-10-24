@@ -15,7 +15,7 @@ use HSBI\PHPUtilities\CRUD\Model\RecordDefinition;
  * Mirgration from ExamNotifications 1.1.0
  * 
  * @author Felix Kuemmel <felix.kuemmel@hsbi.de>
- * @package HSBI\ExamNotifications\Control\Migration
+ * @package ExamNotifications\Control\Migration
  */
 class Migration_From_1_1_0 extends PluginMigration
 {

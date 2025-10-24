@@ -10,7 +10,7 @@ use HSBI\ExamNotifications\PLog;
  *
  * @author Felix Kuemmel <felix.kuemmel@hsbi.de>
  *        
- * @package ExamNotifications\View\Message\Component
+ * @package ExamNotifications\View\Message\UIComponent
  */
 class MessageContainerUIComponent extends UIComponent
 {
