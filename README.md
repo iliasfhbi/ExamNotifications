@@ -10,7 +10,7 @@ ILIAS-Plugin für das Senden von Benachrichtigungen an Studierende während eine
 
 ## 1. Kompatibilität
 
-Das Plugin wurde mit Version `9.10` getestet.
+Das Plugin wurde mit Version `9.14` getestet.
 
 _[Inhaltsverzeichnis](#inhalt)_
 
@@ -53,7 +53,7 @@ git clone -b ILIAS_9.0.0 --recurse-submodules https://gitlab.fh-bielefeld.de/ili
 cd ../../../../../../../
 sudo -uwww-data composer du
 # Der Output von composer du sollte folgende Zeile enthalten:
-# Generated autoloader for \HSBI\PluginCoreFunctions v9.0.0.0
+# Generated autoloader for \HSBI\PluginCoreFunctions v9.0.0.1
 ```
 
 _[Inhaltsverzeichnis](#inhalt)_
@@ -77,7 +77,7 @@ _[Inhaltsverzeichnis](#inhalt)_
 
 | Name                  | Version    | Lokaler Einbindungspfad                                      | URL                                                          |
 | --------------------- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| plugin-core-functions | `v9.0.0.0` | [`submodule/plugin-core-functions`](submodule/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v9.0.0.0?ref_type=tags |
+| plugin-core-functions | `v9.0.0.1` | [`submodule/plugin-core-functions`](submodule/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v9.0.0.1?ref_type=tags |
 
 _[Inhaltsverzeichnis](#inhalt)_
 
