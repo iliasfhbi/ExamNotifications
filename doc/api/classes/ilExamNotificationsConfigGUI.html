@@ -54,18 +54,8 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -three phpdocumentor-sidebar">
-                    <section class="phpdocumentor-sidebar__category">
+                    <section class="phpdocumentor-sidebar__category -namespaces">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                    <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="namespaces/ilias.html" class="">ILIAS</a>
-</h4>
-    <ul class="phpdocumentor-list">
-                    <li>
-                <a href="namespaces/ilias-example.html" class="">Example</a>
-                
-            </li>
-            </ul>
-
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="namespaces/hsbi.html" class="">HSBI</a>
 </h4>
@@ -77,7 +67,7 @@
             </ul>
 
                         </section>
-                <section class="phpdocumentor-sidebar__category">
+                <section class="phpdocumentor-sidebar__category -packages">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
@@ -117,7 +107,7 @@
 
                         </section>
             
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -reports">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="graphs/classes.html">Class Diagram</a></h3>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
@@ -125,7 +115,7 @@
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
     </section>
 
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -indices">
         <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
     </section>
@@ -141,7 +131,7 @@
     ilExamNotificationsConfigGUI
 
         <span class="phpdocumentor-element__extends">
-        extends <abbr title="\ilPluginConfigGUI">ilPluginConfigGUI</abbr>
+        extends <abbr title="\HSBI\PluginCoreFunctions\GUI\Class\ConfigGUIClass">ConfigGUIClass</abbr>
     </span>
     
             <div class="phpdocumentor-element__package">
@@ -151,13 +141,7 @@
                             </ul>
         </div>
     
-            <span class="phpdocumentor-element__implements">
-            implements
-                            <abbr title="\HSBI\PluginCoreFunctions\GUI\Class\Model\GUIClassCommandRouter">GUIClassCommandRouter</abbr>                    </span>
     
-            <span class="phpdocumentor-element__extends">
-            Uses
-                            <abbr title="\HSBI\PluginCoreFunctions\GUI\Class\Control\GUIClassCommandRouterImplementation">GUIClassCommandRouterImplementation</abbr>                    </span>
     </h2>
 
 <div class="phpdocumentor-label-line">
@@ -168,11 +152,12 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="classes/class.ilExamNotificationsConfigGUI.php"><a href="files/classes-class-ilexamnotificationsconfiggui.html"><abbr title="classes/class.ilExamNotificationsConfigGUI.php">class.ilExamNotificationsConfigGUI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 
     </aside>
 
             <p class="phpdocumentor-summary">Plugin configuration GUI</p>
+
 
 
 
@@ -213,6 +198,8 @@
 
 
 
+
+
 <h3 id="toc">
     Table of Contents
     <a href="classes/ilExamNotificationsConfigGUI.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
@@ -221,13 +208,6 @@
 
 
 
-    <h4 id="toc-interfaces">
-        Interfaces
-        <a href="classes/ilExamNotificationsConfigGUI.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -interface"><abbr title="\HSBI\PluginCoreFunctions\GUI\Class\Model\GUIClassCommandRouter">GUIClassCommandRouter</abbr></dt>    </dl>
 
 
 
@@ -242,14 +222,13 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/ilExamNotificationsConfigGUI.html#method_getCommands">getCommands()</a>
+    <a class="" href="classes/ilExamNotificationsConfigGUI.html#method_getCommands">getCommands()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>{@inheritDoc}</dd>
 
     </dl>
-
 
 
 
@@ -292,6 +271,7 @@
     
     
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="classes/ilExamNotificationsConfigGUI.html#method_getCommands#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -307,6 +287,8 @@
                                              
                                     </dd>
                                             </dl>
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -352,6 +334,8 @@
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
                             Prism.highlightElement(code);
+                            d=document.getElementsByClassName("line-numbers");
+                            d[0].scrollTop = d[0].children[1].offsetTop;
                             return;
                         }
 
@@ -427,7 +411,7 @@
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/ilExamNotificationsConfigGUI.html#method_getCommands">getCommands()</a></li>
+                                            <li class=""><a href="classes/ilExamNotificationsConfigGUI.html#method_getCommands">getCommands()</a></li>
                                     </ul>
             </li>
                     </ul>

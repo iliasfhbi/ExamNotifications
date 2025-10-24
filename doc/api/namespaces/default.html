@@ -54,18 +54,8 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -three phpdocumentor-sidebar">
-                    <section class="phpdocumentor-sidebar__category">
+                    <section class="phpdocumentor-sidebar__category -namespaces">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                    <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="namespaces/ilias.html" class="">ILIAS</a>
-</h4>
-    <ul class="phpdocumentor-list">
-                    <li>
-                <a href="namespaces/ilias-example.html" class="">Example</a>
-                
-            </li>
-            </ul>
-
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="namespaces/hsbi.html" class="">HSBI</a>
 </h4>
@@ -77,7 +67,7 @@
             </ul>
 
                         </section>
-                <section class="phpdocumentor-sidebar__category">
+                <section class="phpdocumentor-sidebar__category -packages">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
@@ -117,7 +107,7 @@
 
                         </section>
             
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -reports">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="graphs/classes.html">Class Diagram</a></h3>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
@@ -125,7 +115,7 @@
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
     </section>
 
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -indices">
         <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
     </section>
@@ -153,7 +143,6 @@
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/ilias.html"><abbr title="\ILIAS">ILIAS</abbr></a></dt>
             <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/hsbi.html"><abbr title="\HSBI">HSBI</abbr></a></dt>
     </dl>
 
@@ -164,7 +153,7 @@
 
     </h4>
     <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ilExamNotificationsConfigGUI.html"><abbr title="\ilExamNotificationsConfigGUI">ilExamNotificationsConfigGUI</abbr></a></dt><dd>Plugin configuration GUI</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ilExamNotificationsPlugin.html"><abbr title="\ilExamNotificationsPlugin">ilExamNotificationsPlugin</abbr></a></dt><dd>Plugin class</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ilExamNotificationsUIHookGUI.html"><abbr title="\ilExamNotificationsUIHookGUI">ilExamNotificationsUIHookGUI</abbr></a></dt><dd>User interface hook class responsible for injecting the user interfaces of the plugin into the overall ILIAS user interface</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ExamNotificationProvider.html"><abbr title="\ExamNotificationProvider">ExamNotificationProvider</abbr></a></dt>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ExamNotificationsGUI.html"><abbr title="\ExamNotificationsGUI">ExamNotificationsGUI</abbr></a></dt><dd>GUI class for setting a notification message for the participants of a test</dd>    </dl>
+                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ilExamNotificationsConfigGUI.html"><abbr title="\ilExamNotificationsConfigGUI">ilExamNotificationsConfigGUI</abbr></a></dt><dd>Plugin configuration GUI</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ilExamNotificationsPlugin.html"><abbr title="\ilExamNotificationsPlugin">ilExamNotificationsPlugin</abbr></a></dt><dd>Plugin main class of ExamNotifications</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ilExamNotificationsUIHookGUI.html"><abbr title="\ilExamNotificationsUIHookGUI">ilExamNotificationsUIHookGUI</abbr></a></dt><dd>User interface hook class responsible for injecting the user interfaces of the plugin into the overall ILIAS user interface</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ExamNotificationProvider.html"><abbr title="\ExamNotificationProvider">ExamNotificationProvider</abbr></a></dt>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ExamNotificationToastProvider.html"><abbr title="\ExamNotificationToastProvider">ExamNotificationToastProvider</abbr></a></dt>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ExamNotificationsGUI.html"><abbr title="\ExamNotificationsGUI">ExamNotificationsGUI</abbr></a></dt><dd>GUI class for setting a notification message for the participants of a test</dd>    </dl>
 
 
 
@@ -212,6 +201,8 @@
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
                             Prism.highlightElement(code);
+                            d=document.getElementsByClassName("line-numbers");
+                            d[0].scrollTop = d[0].children[1].offsetTop;
                             return;
                         }
 

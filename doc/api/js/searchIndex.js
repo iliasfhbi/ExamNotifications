@@ -13,28 +13,33 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ilExamNotificationsPlugin",
             "name": "ilExamNotificationsPlugin",
-            "summary": "Plugin\u0020class",
+            "summary": "Plugin\u0020main\u0020class\u0020of\u0020ExamNotifications",
             "url": "classes/ilExamNotificationsPlugin.html"
         },                {
-            "fqsen": "\\ilExamNotificationsPlugin\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/ilExamNotificationsPlugin.html#method___construct"
-        },                {
-            "fqsen": "\\ilExamNotificationsPlugin\u003A\u003Ainstall\u0028\u0029",
-            "name": "install",
+            "fqsen": "\\ilExamNotificationsPlugin\u003A\u003AregisterContainingPCFPath\u0028\u0029",
+            "name": "registerContainingPCFPath",
             "summary": "\u007B\u0040inheritdoc\u007D",
-            "url": "classes/ilExamNotificationsPlugin.html#method_install"
+            "url": "classes/ilExamNotificationsPlugin.html#method_registerContainingPCFPath"
         },                {
-            "fqsen": "\\ilExamNotificationsPlugin\u003A\u003Auninstall\u0028\u0029",
-            "name": "uninstall",
+            "fqsen": "\\ilExamNotificationsPlugin\u003A\u003AregisterDAOs\u0028\u0029",
+            "name": "registerDAOs",
             "summary": "\u007B\u0040inheritdoc\u007D",
-            "url": "classes/ilExamNotificationsPlugin.html#method_uninstall"
+            "url": "classes/ilExamNotificationsPlugin.html#method_registerDAOs"
         },                {
-            "fqsen": "\\ilExamNotificationsPlugin\u003A\u003Aupdate\u0028\u0029",
-            "name": "update",
+            "fqsen": "\\ilExamNotificationsPlugin\u003A\u003AregisterPluginMigrations\u0028\u0029",
+            "name": "registerPluginMigrations",
             "summary": "\u007B\u0040inheritdoc\u007D",
-            "url": "classes/ilExamNotificationsPlugin.html#method_update"
+            "url": "classes/ilExamNotificationsPlugin.html#method_registerPluginMigrations"
+        },                {
+            "fqsen": "\\ilExamNotificationsPlugin\u003A\u003AregisterMainMenuEntries\u0028\u0029",
+            "name": "registerMainMenuEntries",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/ilExamNotificationsPlugin.html#method_registerMainMenuEntries"
+        },                {
+            "fqsen": "\\ilExamNotificationsPlugin\u003A\u003AregisterAdditionalGlobalJavaScripts\u0028\u0029",
+            "name": "registerAdditionalGlobalJavaScripts",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/ilExamNotificationsPlugin.html#method_registerAdditionalGlobalJavaScripts"
         },                {
             "fqsen": "\\ilExamNotificationsUIHookGUI",
             "name": "ilExamNotificationsUIHookGUI",
@@ -51,20 +56,20 @@ Search.appendIndex(
             "summary": "\u007B\u0040inheritdoc\u007D",
             "url": "classes/ExamNotificationProvider.html#method_getNotifications"
         },                {
-            "fqsen": "\\ILIAS\\Example\\Provider\\ExamNotificationToastProvider",
+            "fqsen": "\\ExamNotificationToastProvider",
             "name": "ExamNotificationToastProvider",
             "summary": "",
-            "url": "classes/ILIAS-Example-Provider-ExamNotificationToastProvider.html"
+            "url": "classes/ExamNotificationToastProvider.html"
         },                {
-            "fqsen": "\\ILIAS\\Example\\Provider\\ExamNotificationToastProvider\u003A\u003AgetToasts\u0028\u0029",
+            "fqsen": "\\ExamNotificationToastProvider\u003A\u003AgetToasts\u0028\u0029",
             "name": "getToasts",
             "summary": "\u007B\u0040inheritdoc\u007D",
-            "url": "classes/ILIAS-Example-Provider-ExamNotificationToastProvider.html#method_getToasts"
+            "url": "classes/ExamNotificationToastProvider.html#method_getToasts"
         },                {
-            "fqsen": "\\ILIAS\\Example\\Provider\\ExamNotificationToastProvider\u003A\u003ATOAST_PROVIDER_NAMESPACE",
+            "fqsen": "\\ExamNotificationToastProvider\u003A\u003ATOAST_PROVIDER_NAMESPACE",
             "name": "TOAST_PROVIDER_NAMESPACE",
             "summary": "",
-            "url": "classes/ILIAS-Example-Provider-ExamNotificationToastProvider.html#constant_TOAST_PROVIDER_NAMESPACE"
+            "url": "classes/ExamNotificationToastProvider.html#constant_TOAST_PROVIDER_NAMESPACE"
         },                {
             "fqsen": "\\ExamNotificationsGUI",
             "name": "ExamNotificationsGUI",
@@ -135,6 +140,36 @@ Search.appendIndex(
             "name": "getCmd",
             "summary": "\u007B\u0040inheritdoc\u007D",
             "url": "classes/HSBI-ExamNotifications-Control-ilExamNotificationsConfigGUI-ConfigCommand.html#method_getCmd"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\Control\\Migration\\Migration_From_1_1_0",
+            "name": "Migration_From_1_1_0",
+            "summary": "Mirgration\u0020from\u0020ExamNotifications\u00201.1.0",
+            "url": "classes/HSBI-ExamNotifications-Control-Migration-Migration-From-1-1-0.html"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\Control\\Migration\\Migration_From_1_1_0\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructs\u0020an\u0020new\u0020instance\u0020of\u0020Migration_From_1_1_0.",
+            "url": "classes/HSBI-ExamNotifications-Control-Migration-Migration-From-1-1-0.html#method___construct"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\Control\\Migration\\Migration_From_1_1_0\u003A\u003Amigrate\u0028\u0029",
+            "name": "migrate",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/HSBI-ExamNotifications-Control-Migration-Migration-From-1-1-0.html#method_migrate"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\Control\\Migration\\Migration_From_9_0_0000",
+            "name": "Migration_From_9_0_0000",
+            "summary": "Mirgration\u0020from\u0020ExamNotifications\u00209.0.0000",
+            "url": "classes/HSBI-ExamNotifications-Control-Migration-Migration-From-9-0-0000.html"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\Control\\Migration\\Migration_From_9_0_0000\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructs\u0020an\u0020new\u0020instance\u0020of\u0020Migration_From_9_0_0000.",
+            "url": "classes/HSBI-ExamNotifications-Control-Migration-Migration-From-9-0-0000.html#method___construct"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\Control\\Migration\\Migration_From_9_0_0000\u003A\u003Amigrate\u0028\u0029",
+            "name": "migrate",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/HSBI-ExamNotifications-Control-Migration-Migration-From-9-0-0000.html#method_migrate"
         },                {
             "fqsen": "\\HSBI\\ExamNotifications\\DAO\\MessageDAO",
             "name": "MessageDAO",
@@ -531,46 +566,6 @@ Search.appendIndex(
             "summary": "Enables\u0020to\u0020log\u0020Plugin\u0020actions.",
             "url": "classes/HSBI-ExamNotifications-PLog.html"
         },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\MainMenu\\AccessManager",
-            "name": "AccessManager",
-            "summary": "Trait\u0020that\u0020can\u0020create\u0020a\u0020callable\u0020that\u0020can\u0020passed\u0020to\u0020an\u0020instance\u0020of\nILIAS\\GlobalScreen\\Scope\\MainMenu\\Factory\\AbstractBaseItem\u0020to\u0020ensure\nthat\u0020the\u0020menu\u0020entries\u0020are\u0020only\u0020shown\u0020to\u0020allowed\u0020users.",
-            "url": "classes/HSBI-ExamNotifications-View-MainMenu-AccessManager.html"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\MainMenu\\AccessManager\u003A\u003A\u0024callableIsAccessAllowed",
-            "name": "callableIsAccessAllowed",
-            "summary": "Ensures\u0020that\u0020the\u0020menu\u0020entries\u0020are\u0020only\u0020shown\u0020to\u0020allowed\u0020users",
-            "url": "classes/HSBI-ExamNotifications-View-MainMenu-AccessManager.html#property_callableIsAccessAllowed"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\MainMenu\\Entry",
-            "name": "Entry",
-            "summary": "Trait\u0020that\u0020enables\u0020the\u0020EntryProvider\u0020to\u0020create\u0020a\nTopParentItem\u0020as\u0020main\u0020menu\u0020entry\u0020for\u0020the\u0020ExamNotifications\u002Dplugin.",
-            "url": "classes/HSBI-ExamNotifications-View-MainMenu-Entry.html"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\MainMenu\\Entry\u003A\u003AcreateEntry\u0028\u0029",
-            "name": "createEntry",
-            "summary": "Creates\u0020a\u0020TopLinkItem\u0020as\u0020main\u0020menu\u0020entry\u0020for\u0020the\u0020ExamNotifications\u002Dplugin.",
-            "url": "classes/HSBI-ExamNotifications-View-MainMenu-Entry.html#method_createEntry"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\MainMenu\\Entry\u003A\u003A\u0024mainMenuEntryId",
-            "name": "mainMenuEntryId",
-            "summary": "Is\u0020used\u0020by\u0020the\u0020GlobalScreen\u0020services\u0020to\u0020identify\u0020the\u0020main\u0020menu\u0020entry.",
-            "url": "classes/HSBI-ExamNotifications-View-MainMenu-Entry.html#property_mainMenuEntryId"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\MainMenu\\EntryProvider",
-            "name": "EntryProvider",
-            "summary": "Provides\u0020a\u0020main\u0020menu\u0020entry\u0020for\u0020the\u0020ExamNotifications\u002Dplugin.",
-            "url": "classes/HSBI-ExamNotifications-View-MainMenu-EntryProvider.html"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\MainMenu\\EntryProvider\u003A\u003AgetStaticTopItems\u0028\u0029",
-            "name": "getStaticTopItems",
-            "summary": "",
-            "url": "classes/HSBI-ExamNotifications-View-MainMenu-EntryProvider.html#method_getStaticTopItems"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\MainMenu\\EntryProvider\u003A\u003AgetStaticSubItems\u0028\u0029",
-            "name": "getStaticSubItems",
-            "summary": "",
-            "url": "classes/HSBI-ExamNotifications-View-MainMenu-EntryProvider.html#method_getStaticSubItems"
-        },                {
             "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\Creation\\Creation",
             "name": "Creation",
             "summary": "Represents\u0020a\u0020Creation",
@@ -796,21 +791,6 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html"
         },                {
-            "fqsen": "\\ILIAS\\Example\\Provider",
-            "name": "Provider",
-            "summary": "",
-            "url": "namespaces/ilias-example-provider.html"
-        },                {
-            "fqsen": "\\ILIAS\\Example",
-            "name": "Example",
-            "summary": "",
-            "url": "namespaces/ilias-example.html"
-        },                {
-            "fqsen": "\\ILIAS",
-            "name": "ILIAS",
-            "summary": "",
-            "url": "namespaces/ilias.html"
-        },                {
             "fqsen": "\\HSBI\\ExamNotifications\\Control\\ExamNotificationsGUI",
             "name": "ExamNotificationsGUI",
             "summary": "",
@@ -825,6 +805,11 @@ Search.appendIndex(
             "name": "ilExamNotificationsConfigGUI",
             "summary": "",
             "url": "namespaces/hsbi-examnotifications-control-ilexamnotificationsconfiggui.html"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\Control\\Migration",
+            "name": "Migration",
+            "summary": "",
+            "url": "namespaces/hsbi-examnotifications-control-migration.html"
         },                {
             "fqsen": "\\HSBI\\ExamNotifications\\DAO",
             "name": "DAO",
@@ -846,16 +831,6 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/hsbi.html"
         },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\MainMenu",
-            "name": "MainMenu",
-            "summary": "",
-            "url": "namespaces/hsbi-examnotifications-view-mainmenu.html"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View",
-            "name": "View",
-            "summary": "",
-            "url": "namespaces/hsbi-examnotifications-view.html"
-        },                {
             "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\Creation",
             "name": "Creation",
             "summary": "",
@@ -865,6 +840,11 @@ Search.appendIndex(
             "name": "Message",
             "summary": "",
             "url": "namespaces/hsbi-examnotifications-view-message.html"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\View",
+            "name": "View",
+            "summary": "",
+            "url": "namespaces/hsbi-examnotifications-view.html"
         },                {
             "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\History",
             "name": "History",

@@ -54,18 +54,8 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -three phpdocumentor-sidebar">
-                    <section class="phpdocumentor-sidebar__category">
+                    <section class="phpdocumentor-sidebar__category -namespaces">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                    <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="namespaces/ilias.html" class="">ILIAS</a>
-</h4>
-    <ul class="phpdocumentor-list">
-                    <li>
-                <a href="namespaces/ilias-example.html" class="">Example</a>
-                
-            </li>
-            </ul>
-
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="namespaces/hsbi.html" class="">HSBI</a>
 </h4>
@@ -77,7 +67,7 @@
             </ul>
 
                         </section>
-                <section class="phpdocumentor-sidebar__category">
+                <section class="phpdocumentor-sidebar__category -packages">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
@@ -117,7 +107,7 @@
 
                         </section>
             
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -reports">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="graphs/classes.html">Class Diagram</a></h3>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
@@ -125,7 +115,7 @@
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
     </section>
 
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -indices">
         <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
     </section>
@@ -141,7 +131,7 @@
     ilExamNotificationsPlugin
 
         <span class="phpdocumentor-element__extends">
-        extends <abbr title="\ilUserInterfaceHookPlugin">ilUserInterfaceHookPlugin</abbr>
+        extends <abbr title="\HSBI\PluginCoreFunctions\PluginMainClass\UIHookPlugin">UIHookPlugin</abbr>
     </span>
     
             <div class="phpdocumentor-element__package">
@@ -162,11 +152,14 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="classes/class.ilExamNotificationsPlugin.php"><a href="files/classes-class-ilexamnotificationsplugin.html"><abbr title="classes/class.ilExamNotificationsPlugin.php">class.ilExamNotificationsPlugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">21</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Plugin class</p>
+            <p class="phpdocumentor-summary">Plugin main class of ExamNotifications</p>
+
+
+
 
 
 
@@ -194,35 +187,42 @@
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/ilExamNotificationsPlugin.html#method___construct">__construct()</a>
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/ilExamNotificationsPlugin.html#method_registerAdditionalGlobalJavaScripts">registerAdditionalGlobalJavaScripts()</a>
     <span>
-                                &nbsp;: mixed    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/ilExamNotificationsPlugin.html#method_install">install()</a>
-    <span>
-                                &nbsp;: void    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>{@inheritdoc}</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/ilExamNotificationsPlugin.html#method_uninstall">uninstall()</a>
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/ilExamNotificationsPlugin.html#method_registerContainingPCFPath">registerContainingPCFPath()</a>
     <span>
-                                &nbsp;: bool    </span>
+                                &nbsp;: string    </span>
 </dt>
 <dd>{@inheritdoc}</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/ilExamNotificationsPlugin.html#method_update">update()</a>
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/ilExamNotificationsPlugin.html#method_registerDAOs">registerDAOs()</a>
     <span>
-                                &nbsp;: bool    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>{@inheritdoc}</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/ilExamNotificationsPlugin.html#method_registerMainMenuEntries">registerMainMenuEntries()</a>
+    <span>
+                                &nbsp;: <abbr title="\HSBI\PluginCoreFunctions\MainMenu\Model\Entries">Entries</abbr>    </span>
+</dt>
+<dd>{@inheritdoc}</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/ilExamNotificationsPlugin.html#method_registerPluginMigrations">registerPluginMigrations()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>{@inheritdoc}</dd>
 
     </dl>
-
 
 
 
@@ -239,90 +239,36 @@
                     <article
         class="phpdocumentor-element
             -method
-            -public
+            -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method___construct">
-        __construct()
-        <a href="classes/ilExamNotificationsPlugin.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_registerAdditionalGlobalJavaScripts">
+        registerAdditionalGlobalJavaScripts()
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerAdditionalGlobalJavaScripts" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="classes/class.ilExamNotificationsPlugin.php"><a href="files/classes-class-ilexamnotificationsplugin.html"><abbr title="classes/class.ilExamNotificationsPlugin.php">class.ilExamNotificationsPlugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\ilDBInterface">ilDBInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$db</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\ilComponentRepositoryWrite">ilComponentRepositoryWrite</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$component_repository</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$db</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\ilDBInterface">ilDBInterface</abbr></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$component_repository</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\ilComponentRepositoryWrite">ilComponentRepositoryWrite</abbr></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$id</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_install">
-        install()
-        <a href="classes/ilExamNotificationsPlugin.html#method_install" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="classes/class.ilExamNotificationsPlugin.php"><a href="files/classes-class-ilexamnotificationsplugin.html"><abbr title="classes/class.ilExamNotificationsPlugin.php">class.ilExamNotificationsPlugin.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">107</span>
 
     </aside>
 
         <p class="phpdocumentor-summary">{@inheritdoc}</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">install</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">registerAdditionalGlobalJavaScripts</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/ilExamNotificationsPlugin.html#method_install#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerAdditionalGlobalJavaScripts#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -330,97 +276,53 @@
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\ilPlugin::install()">ilPlugin::install()</abbr></span>
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\AdditionalGlobalJavaScriptRegistration::registerAdditionalGlobalJavaScripts()">AdditionalGlobalJavaScriptRegistration::registerAdditionalGlobalJavaScripts()</abbr></span>
                                         
                                              
                                     </dd>
                                             </dl>
 
     
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_uninstall">
-        uninstall()
-        <a href="classes/ilExamNotificationsPlugin.html#method_uninstall" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="classes/class.ilExamNotificationsPlugin.php"><a href="files/classes-class-ilexamnotificationsplugin.html"><abbr title="classes/class.ilExamNotificationsPlugin.php">class.ilExamNotificationsPlugin.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">81</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">{@inheritdoc}</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">uninstall</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/ilExamNotificationsPlugin.html#method_uninstall#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\ilPlugin::uninstall()">ilPlugin::uninstall()</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             </section>
 
 </article>
                     <article
         class="phpdocumentor-element
             -method
-            -public
+            -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_update">
-        update()
-        <a href="classes/ilExamNotificationsPlugin.html#method_update" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_registerContainingPCFPath">
+        registerContainingPCFPath()
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerContainingPCFPath" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="classes/class.ilExamNotificationsPlugin.php"><a href="files/classes-class-ilexamnotificationsplugin.html"><abbr title="classes/class.ilExamNotificationsPlugin.php">class.ilExamNotificationsPlugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">97</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
         <p class="phpdocumentor-summary">{@inheritdoc}</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">update</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">registerContainingPCFPath</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/ilExamNotificationsPlugin.html#method_update#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerContainingPCFPath#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -428,15 +330,179 @@
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\ilPlugin::update()">ilPlugin::update()</abbr></span>
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\ContainingPCFPathRegistration::registerContainingPCFPath()">ContainingPCFPathRegistration::registerContainingPCFPath()</abbr></span>
                                         
                                              
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_registerDAOs">
+        registerDAOs()
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerDAOs" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="classes/class.ilExamNotificationsPlugin.php"><a href="files/classes-class-ilexamnotificationsplugin.html"><abbr title="classes/class.ilExamNotificationsPlugin.php">class.ilExamNotificationsPlugin.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">48</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">{@inheritdoc}</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">registerDAOs</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerDAOs#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\DAORegistration::registerDAOs()">DAORegistration::registerDAOs()</abbr></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_registerMainMenuEntries">
+        registerMainMenuEntries()
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerMainMenuEntries" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="classes/class.ilExamNotificationsPlugin.php"><a href="files/classes-class-ilexamnotificationsplugin.html"><abbr title="classes/class.ilExamNotificationsPlugin.php">class.ilExamNotificationsPlugin.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">78</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">{@inheritdoc}</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">registerMainMenuEntries</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\HSBI\PluginCoreFunctions\MainMenu\Model\Entries">Entries</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerMainMenuEntries#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\MainMenuEntriesRegistration::registerMainMenuEntries()">MainMenuEntriesRegistration::registerMainMenuEntries()</abbr></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\HSBI\PluginCoreFunctions\MainMenu\Model\Entries">Entries</abbr></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_registerPluginMigrations">
+        registerPluginMigrations()
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerPluginMigrations" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="classes/class.ilExamNotificationsPlugin.php"><a href="files/classes-class-ilexamnotificationsplugin.html"><abbr title="classes/class.ilExamNotificationsPlugin.php">class.ilExamNotificationsPlugin.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">{@inheritdoc}</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">registerPluginMigrations</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/ilExamNotificationsPlugin.html#method_registerPluginMigrations#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\PluginMigrationRegistration::registerPluginMigrations()">PluginMigrationRegistration::registerPluginMigrations()</abbr></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             </section>
 
 </article>
@@ -478,6 +544,8 @@
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
                             Prism.highlightElement(code);
+                            d=document.getElementsByClassName("line-numbers");
+                            d[0].scrollTop = d[0].children[1].offsetTop;
                             return;
                         }
 
@@ -553,10 +621,11 @@
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/ilExamNotificationsPlugin.html#method___construct">__construct()</a></li>
-                                            <li><a href="classes/ilExamNotificationsPlugin.html#method_install">install()</a></li>
-                                            <li><a href="classes/ilExamNotificationsPlugin.html#method_uninstall">uninstall()</a></li>
-                                            <li><a href="classes/ilExamNotificationsPlugin.html#method_update">update()</a></li>
+                                            <li class=""><a href="classes/ilExamNotificationsPlugin.html#method_registerAdditionalGlobalJavaScripts">registerAdditionalGlobalJavaScripts()</a></li>
+                                            <li class=""><a href="classes/ilExamNotificationsPlugin.html#method_registerContainingPCFPath">registerContainingPCFPath()</a></li>
+                                            <li class=""><a href="classes/ilExamNotificationsPlugin.html#method_registerDAOs">registerDAOs()</a></li>
+                                            <li class=""><a href="classes/ilExamNotificationsPlugin.html#method_registerMainMenuEntries">registerMainMenuEntries()</a></li>
+                                            <li class=""><a href="classes/ilExamNotificationsPlugin.html#method_registerPluginMigrations">registerPluginMigrations()</a></li>
                                     </ul>
             </li>
                     </ul>
