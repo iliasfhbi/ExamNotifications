@@ -16,7 +16,6 @@ use ILIAS\GlobalScreen\Scope\Notification\Provider\NotificationProvider;
 use HSBI\ExamNotifications\PLog;
 use HSBI\PHPUtilities\CRUD\Model\Fields;
 use HSBI\PluginCoreFunctions\PluginLoader;
-use HSBI\PluginCoreFunctions\Config\Plugin\Control\PluginConfigAccess;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\PCFIDIC;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\Objects\Test\TestObject;
 
@@ -36,7 +35,9 @@ class ExamNotificationProvider extends AbstractNotificationProvider implements N
         $plugin = PluginLoader::getPluginLoader()->getPlugin();
         if (! $plugin->isActive())
             return PLog::debug()->return([]);
-        $pluginConfigAccess = new PluginConfigAccess();
+        
+        $plugin = ilExamNotificationsPlugin::instance();
+        $pluginConfigAccess = $plugin->getUiHookPluginInfo()->getPluginConfigAccess();
 
         if ($pluginConfigAccess->getValue(PluginConfigID::PRESENTATION_TYPE) !== PluginConfigID::PRESENTATION_TYPE_TOAST->name)
             return PLog::debug()->return([]);
@@ -56,10 +57,10 @@ class ExamNotificationProvider extends AbstractNotificationProvider implements N
             ->factory()
             ->symbol()
             ->icon()
-            ->standard("tst", "Klausurbenachrichtigungen");
+            ->standard("tst", $plugin->txt('plugin_name'));
 
         $group = $factory->standardGroup($this->if->identifier('exam_notification_group'))
-            ->withTitle("Klausurbenachrichtigung(en):");
+            ->withTitle("{$plugin->txt('exam_notifications')}:");
 
         $userID = PCFIDIC::User()->currentUserID();
         $userHasActiveTests = false;
@@ -98,7 +99,7 @@ class ExamNotificationProvider extends AbstractNotificationProvider implements N
             $examNotificationEmpty = $this->dic->ui()
                 ->factory()
                 ->item()
-                ->notification('keine neuen Nachrichten', $icon);
+                ->notification($plugin->txt('no_new_messages'), $icon);
 
             $examNotificationEmptyItem = $factory->standard($this->if->identifier('test_notification_empty'))
                 ->withNotificationItem($examNotificationEmpty)
@@ -143,7 +144,7 @@ class ExamNotificationProvider extends AbstractNotificationProvider implements N
                 ->notification($title, $icon)
                 ->withDescription($message->getText())
                 ->withProperties([
-                "Gesendet um" => $message->getTimestamp()
+                    $plugin->txt('sent_at') => DateTime::createFromFormat('Y-m-d H:i:s', $message->getTimestamp())->format($plugin->txt('date_time_format'))
             ]);
 
             $examNotificationItem = $factory->standard($this->if->identifier('test_notification_' . $message->getId()))

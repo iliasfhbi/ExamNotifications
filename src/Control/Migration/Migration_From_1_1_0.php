@@ -38,8 +38,6 @@ class Migration_From_1_1_0 extends PluginMigration
     protected function migrate(): void
     {
         PLog::debug()->parameter();
-//         global $DIC;
-//         $DIC->database()->dropTable('ui_uihk_exnot_tstmsg', false);
         $tstmsgDataSource = new DataSource(new RecordDefinition(), 'ui_uihk_exnot_tstmsg');
         $tstmsgDataSource->delete();
         $messageDAO = new MessageDAO();

@@ -4,6 +4,7 @@ namespace HSBI\ExamNotifications\View\Message\UIComponent;
 use HSBI\ExamNotifications\Model\Message;
 use HSBI\PluginCoreFunctions\UIComponents\UIComponent;
 use ILIAS\UI\Component\Component;
+use ilExamNotificationsPlugin;
 use HSBI\ExamNotifications\PLog;
 
 /**
@@ -177,6 +178,7 @@ class MessageUIComponent extends UIComponent
         global $DIC;
         $uiFactory = $this->uiFactory();
         $uiRenderer = $DIC->ui()->renderer();
+        $plugin = ilExamNotificationsPlugin::instance();
 
         $examNotificationID = $this->messageID;
         $examNotificationDivID = "ui_uihk_exnot_closeButton_ExamNotificationID_$examNotificationID";
@@ -189,12 +191,12 @@ class MessageUIComponent extends UIComponent
 
         $content = str_replace(["\t", "\n"], ['&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ', '<br/>'], $this->content);
         $messageBoxContent = $closeButton;
-        $messageBoxContent .= "<p><b>Klausurbenachrichtigung - {$this->testTitle}</b></p>";
+        $messageBoxContent .= "<p><b>{$plugin->txt('plugin_name')} - {$this->testTitle}</b></p>";
         $messageBoxContent .= "<p>$content</p>";
-        $formattedTimestamp = \DateTime::createFromFormat('Y-m-d H:i:s', $this->timestamp)->format('H:i:s d.m.Y');
-        $footer = "<hr/><p>Gesendet um: <span>$formattedTimestamp</span>";
+        $formattedTimestamp = \DateTime::createFromFormat('Y-m-d H:i:s', $this->timestamp)->format($plugin->txt('date_time_format'));
+        $footer = "<hr/><p>{$plugin->txt('sent_at')}: <span>$formattedTimestamp</span>";
         if($this->testLink !== null){
-            $testLink = $uiFactory->link()->standard('Test in neuem Tab anzeigen', $this->testLink)->withOpenInNewViewport(true);
+            $testLink = $uiFactory->link()->standard($plugin->txt('view_test_in_new_tab'), $this->testLink)->withOpenInNewViewport(true);
             $footer .= " |&nbsp;{$uiRenderer->render($testLink)}";
         }
         $footer .= "</p>";

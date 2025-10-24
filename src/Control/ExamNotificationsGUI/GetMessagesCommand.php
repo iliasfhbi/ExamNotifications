@@ -16,13 +16,13 @@ use HSBI\PHPUtilities\CRUD\Model\FilterOption;
 use HSBI\PHPUtilities\CRUD\Model\SortDefinition;
 use HSBI\PHPUtilities\CRUD\Model\SortDirection;
 use HSBI\PHPUtilities\CRUD\Model\SortOption;
-use HSBI\PluginCoreFunctions\Config\Plugin\Control\PluginConfigAccess;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\PCFIDIC;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\Objects\Test\TestObject;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\Command;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\Result;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\UIComponentExitResult;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\ExitResult;
+use ilExamNotificationsPlugin;
 
 /**
  * The controller for the GetMessagesCommand of ExamNotificationsGUI
@@ -44,8 +44,8 @@ class GetMessagesCommand implements Command
     public function run(): Result
     {
         PLog::debug()->parameter();
-        
-        $pluginConfigAccess = new PluginConfigAccess();
+                
+        $pluginConfigAccess = ilExamNotificationsPlugin::instance()->getUiHookPluginInfo()->getPluginConfigAccess();
         $messageDAO = new MessageDAO();
         $messageViewedDAO = new MessageViewedDAO($messageDAO);
 

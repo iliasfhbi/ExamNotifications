@@ -90,7 +90,7 @@ class ilExamNotificationsPlugin extends UIHookPlugin
             // passes view_control/input_0/input_1=0&view_control/input_0/input_2=25&view_control/input_3/input_4=timestamp&view_control/input_3/input_5=DESC so that the messages are sorted after thier timestamp
             $target .= "&ref_id=$refID&view_control/input_0/input_1=0&view_control/input_0/input_2=25&view_control/input_3/input_4=timestamp&view_control/input_3/input_5=DESC";
             $link = new Link($target);
-            $title = self::instance()->txt("pluginName");
+            $title = self::instance()->txt("plugin_name");
             $accessManagerClosure = PCFIDIC::Objects()->Test()->hasUserWritePermission(...);
             $uiIcon = new UIIcon(StandardIcon::ADMINISTRATIVE_NOTIFICATIONS, $title, IconSize::SMALL, false);
             $entry = new Entry($title, $link, $accessManagerClosure, $accessManagerClosure, $uiIcon);

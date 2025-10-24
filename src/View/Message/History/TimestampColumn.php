@@ -5,6 +5,7 @@ use HSBI\PHPUtilities\CRUD\Model\FieldDefinition;
 use HSBI\PHPUtilities\CRUD\Tuple\Model\Tuple;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Read\Column;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Read\DataType;
+use ilExamNotificationsPlugin;
 
 /**
  * Represents a TimestampColumn
@@ -29,7 +30,7 @@ class TimestampColumn extends Column{
 	 * 	The $timestamp of the new TimestampColumn
 	 */
 	public function __construct(FieldDefinition $timestamp){
-	    parent::__construct('Zeitpunkt', DataType::TIMESTAMP);
+	    parent::__construct(ilExamNotificationsPlugin::instance()->txt('timestamp'), DataType::TIMESTAMP);
 		$this->timestamp = $timestamp;
 	}
 

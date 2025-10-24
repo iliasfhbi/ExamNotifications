@@ -19,6 +19,7 @@ use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Delete\DeleteAllA
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Export\ExportAllAction;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Export\ExportType;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\UIComponentResult;
+use ilExamNotificationsPlugin;
 
 /**
  * The controller for the DefineMessagesCommand of ExamNotificationsGUI
@@ -39,6 +40,7 @@ class DefineMessagesCommand implements Command
     public function run(): Result
     {
         $messageDAO = new MessageDAO();
+        $plugin = ilExamNotificationsPlugin::instance();
         
         $testRefId = PCFIDIC::CTRL()->getRefID();
         if (! PCFIDIC::Objects()->Test()->hasUserWritePermission($testRefId))
@@ -62,22 +64,22 @@ class DefineMessagesCommand implements Command
 
         $table = new UITableTupleCRUD(
             $messageDAO, 
-            'Nachrichten', 
+            $plugin->txt('messages'), 
             previousFilterDefinition: $filterDefinition, 
             defaultSortDefinition: $defaultSortDefinition, 
             readAction: new History($messageDAO), 
             createAction: new Creation($messageDAO), 
-            deleteAction: new DeleteAllAction('Nachrichtenverlauf löschen'), 
+            deleteAction: new DeleteAllAction($plugin->txt('delete_message_history')), 
             exportAction: new ExportAllAction(
-                'Nachrichtenverlauf als CSV exportieren', 
+                $plugin->txt('export_message_history_as_CSV'), 
                 exportType: ExportType::CSV, 
-                fileName: "Klausurbenachrichtigungsverlauf - $testTitle"
+                fileName: "{$plugin->txt('exam_notification_history')} - $testTitle"
                 )
             );
 
         return PLog::debug()->return(new UIComponentResult(
             $table, 
-            "Klausurbenachrichtigung - $testTitle", 
+            "{$plugin->txt('plugin_name')} - $testTitle", 
             'templates/default/images/standard/icon_adn.svg')
             );
     }

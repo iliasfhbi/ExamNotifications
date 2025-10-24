@@ -18,11 +18,11 @@ use HSBI\PHPUtilities\CRUD\Model\FilterOption;
 use HSBI\PHPUtilities\CRUD\Model\SortDefinition;
 use HSBI\PHPUtilities\CRUD\Model\SortDirection;
 use HSBI\PHPUtilities\CRUD\Model\SortOption;
-use HSBI\PluginCoreFunctions\Config\Plugin\Control\PluginConfigAccess;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\PCFIDIC;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\Objects\Test\TestObject;
 use ILIAS\GlobalScreen\Scope\Toast\Provider\AbstractToastProvider;
 use DateTimeImmutable;
+use ilExamNotificationsPlugin;
 use HSBI\PluginCoreFunctions\PluginLoader;
 
 // ./libs/composer/vendor/bin/composer dump-autoload
@@ -45,7 +45,8 @@ class ExamNotificationToastProvider extends AbstractToastProvider
         if (! $plugin->isActive())
             return PLog::debug()->return([]);
 
-        $pluginConfigAccess = new PluginConfigAccess();
+        $plugin = ilExamNotificationsPlugin::instance();
+        $pluginConfigAccess = $plugin->getUiHookPluginInfo()->getPluginConfigAccess();
 
         if ($pluginConfigAccess->getValue(PluginConfigID::PRESENTATION_TYPE) !== PluginConfigID::PRESENTATION_TYPE_TOAST->name)
             return PLog::debug()->return([]);
@@ -110,14 +111,14 @@ class ExamNotificationToastProvider extends AbstractToastProvider
             ->factory()
             ->symbol()
             ->icon()
-            ->standard("tst", "Klausurbenachrichtigungen");
+            ->standard("tst", $plugin->txt('plugin_name'));
         foreach ($messages as /** @var $message Message*/
         $message) {
             if (! ($viewedMessageEntryExists[$message->getId()] ?? false))
                 $messageViewedDAO->create(new MessageViewed(0, $message->getTestReferenceId(), $message->getId(), $userID, MessageStatus::TOAST, $now->format('Y-m-d H:i:s')));
             $toastID = self::TOAST_PROVIDER_NAMESPACE . '_' . $message->getId();
             $toast = $this->toast_factory->standard($this->if->identifier($toastID), // Every item needs an identification
-            "Klausurbenachrichtigung " . $userTests[$message->getTestReferenceId()]->getTitle() // Use ilLanguage here!
+                $plugin->txt('plugin_name') . " " . $userTests[$message->getTestReferenceId()]->getTitle()
             )
                 ->withDescription($message->getText())
                 ->

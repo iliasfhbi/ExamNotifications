@@ -7,6 +7,7 @@ use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Create\CreateActi
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Create\InputFields;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Create\InputFieldTextArea;
 use HSBI\PluginCoreFunctions\Validation\RegexValidator;
+use ilExamNotificationsPlugin;
 
 /**
  * Represents a Creation
@@ -38,7 +39,8 @@ class Creation extends CreateAction
      * 	The $messageDAO of the new Creation
      */
     public function __construct(MessageDAO $messageDAO){
-        parent::__construct(new InputFields(new InputFieldTextArea(self::CONTENT_INPUT_FIELD_ID, 'Inhalt', new RegexValidator(), 0, 200)), "Neue Nachricht", "Senden");
+        $plugin = ilExamNotificationsPlugin::instance();
+        parent::__construct(new InputFields(new InputFieldTextArea(self::CONTENT_INPUT_FIELD_ID, $plugin->txt('content'), new RegexValidator(), 0, 200)), $plugin->txt('new_message'), $plugin->txt('send'));
         $this->messageDAO = $messageDAO;
     }
     public function onCreate(InputFields $inputFields): Tuple

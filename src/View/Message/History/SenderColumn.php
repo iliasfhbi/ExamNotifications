@@ -5,6 +5,7 @@ use HSBI\PHPUtilities\CRUD\Model\FieldDefinition;
 use HSBI\PHPUtilities\CRUD\Tuple\Model\Tuple;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Read\Column;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Read\DataType;
+use ilExamNotificationsPlugin;
 use ilObjUser;
 
 /**
@@ -30,7 +31,7 @@ class SenderColumn extends Column{
 	 * 	The $senderUserId of the new SenderColumn
 	 */
 	public function __construct(FieldDefinition $senderUserId){
-	    parent::__construct('Sender', DataType::TEXT);
+	    parent::__construct(ilExamNotificationsPlugin::instance()->txt('sender'), DataType::TEXT);
 		$this->senderUserId = $senderUserId;
 	}
 

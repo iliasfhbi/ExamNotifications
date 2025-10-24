@@ -1,0 +1,24 @@
+plugin_name#:#Exam Notification
+
+timestamp#:#Timestamp
+date_time_format#:#Y-m-d H:i:s
+sent_at#:#Sent at
+sender#:#Sender
+content#:#Content
+
+message_history#:#Message history
+exam_notification_history#:#Exam notification history
+new_message#:#New message
+send#:#Send
+view_test_in_new_tab#:#View test in new tab
+messages#:#Messages
+delete_message_history#:#Delete message history
+export_message_history_as_CSV#:#Export message history as CSV file
+
+plugin_configuration#:#Plugin configuration
+notification_display_mode#:#Notification display mode
+banner_embedded_via_JavaScript#:#Banner embedded via JavaScript
+via_toasts_and_notifications#:#Via toasts and notifications
+
+no_new_messages#:#no new messages
+exam_notifications#:#Exam notification(s)

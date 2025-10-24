@@ -25,6 +25,7 @@ use HSBI\PluginCoreFunctions\GUI\Command\Model\Result;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\UIComponentExitResult;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\ExitResult;
 use Exception;
+use ilExamNotificationsPlugin;
 
 /**
  * The controller for the CloseMessageCommand of ExamNotificationsGUI
@@ -48,7 +49,7 @@ class CloseMessageCommand implements Command
         PLog::debug()->parameter();
         $messageId = PCFIDIC::CTRL()->getRefID();
         if ($messageId !== null) {
-            $pluginConfigAccess = new PluginConfigAccess();
+            $pluginConfigAccess = ilExamNotificationsPlugin::instance()->getUiHookPluginInfo()->getPluginConfigAccess();
             $messageDAO = new MessageDAO();
             $messageViewedDAO = new MessageViewedDAO($messageDAO);
             if ($pluginConfigAccess->getValue(PluginConfigID::PRESENTATION_TYPE, PluginConfigID::PRESENTATION_TYPE_JS->name) !== PluginConfigID::PRESENTATION_TYPE_JS->name)

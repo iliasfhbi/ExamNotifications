@@ -3,7 +3,6 @@ namespace HSBI\ExamNotifications\Control\ilExamNotificationsConfigGUI;
 
 use HSBI\ExamNotifications\PLog;
 use HSBI\ExamNotifications\Model\PluginConfigID;
-use HSBI\PluginCoreFunctions\Config\Plugin\Control\PluginConfigAccess;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\Command;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\Result;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\UIComponentResult;
@@ -11,6 +10,7 @@ use HSBI\PluginCoreFunctions\UIComponents\UIInput\UIInputForm;
 use HSBI\PluginCoreFunctions\UIComponents\UIInput\UIInputRadio;
 use HSBI\PluginCoreFunctions\UIComponents\UIInput\Model\RadioOption;
 use HSBI\PluginCoreFunctions\UIComponents\UIInput\Model\RadioOptions;
+use ilExamNotificationsPlugin;
 /**
  * The controller for the ConfigCommand of ilExamNotificationsConfigGUI
  *
@@ -30,15 +30,16 @@ class ConfigCommand implements Command
      */
     public function run(): Result
     {
-        PLog::debug()->parameter();
-        $pluginConfigAccess = new PluginConfigAccess();
+        PLog::debug()->parameter();        
+        $plugin = ilExamNotificationsPlugin::instance();
+        $pluginConfigAccess = $plugin->getUiHookPluginInfo()->getPluginConfigAccess();
         
-        $form = new UIInputForm('pluginConfig', "Plugin Konfiguration");
+        $form = new UIInputForm('pluginConfig', $plugin->txt('plugin_configuration'));
         
         $radioOptions = new RadioOptions();
-        $radioOptions->addRadioOptions(new RadioOption(PluginConfigID::PRESENTATION_TYPE_JS, 'Mittels Javascript eingebettetes Banner'));
-        $radioOptions->addRadioOptions(new RadioOption(PluginConfigID::PRESENTATION_TYPE_TOAST, 'Mittels Toasts und Notifications'));
-        $presentationType = new UIInputRadio(PluginConfigID::PRESENTATION_TYPE, 'Anzeigeart der Benachrichtigungen', $radioOptions);
+        $radioOptions->addRadioOptions(new RadioOption(PluginConfigID::PRESENTATION_TYPE_JS, $plugin->txt('banner_embedded_via_JavaScript')));
+        $radioOptions->addRadioOptions(new RadioOption(PluginConfigID::PRESENTATION_TYPE_TOAST, $plugin->txt('via_toasts_and_notifications')));
+        $presentationType = new UIInputRadio(PluginConfigID::PRESENTATION_TYPE, $plugin->txt('notification_display_mode'), $radioOptions);
         $presentationType->setValue($pluginConfigAccess->getValue(PluginConfigID::PRESENTATION_TYPE, PluginConfigID::PRESENTATION_TYPE_JS->name));
         $form->addUIInputs($presentationType);
         
