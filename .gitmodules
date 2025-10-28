@@ -1,0 +1,3 @@
+[submodule "vendor/submodules/plugin-core-functions"]
+	path = vendor/submodules/plugin-core-functions
+	url = https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions.git
