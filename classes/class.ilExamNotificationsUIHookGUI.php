@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../vendor/composer-vendor/autoload.php";
 /**
  * User interface hook class responsible for injecting the user interfaces of the plugin into the overall ILIAS user interface
  *

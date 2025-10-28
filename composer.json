@@ -9,7 +9,10 @@
             "email": "felix.kuemmel@hsbi.de"
         }
     ],
-	"optimize-autoloader": true,
+    "config": {
+        "vendor-dir": "vendor/composer-vendor",
+	    "optimize-autoloader": true
+    },
     "autoload": {
         "psr-4": {
             "HSBI\\ExamNotifications\\": "src"

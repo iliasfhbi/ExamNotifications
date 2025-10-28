@@ -20,8 +20,8 @@ use HSBI\PluginCoreFunctions\UIComponents\Icon\StandardIcon;
 use HSBI\ExamNotifications\Control\Migration\Migration_From_1_1_0;
 use HSBI\ExamNotifications\Control\Migration\Migration_From_9_0_0000;
 
-require_once __DIR__ . '/../submodule/plugin-core-functions/autoloader/Autoloader.php';
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . '/../vendor/submodules/plugin-core-functions/autoloader/Autoloader.php';
+require_once __DIR__ . "/../vendor/composer-vendor/autoload.php";
 
 /**
  * Plugin main class of ExamNotifications
@@ -37,7 +37,7 @@ class ilExamNotificationsPlugin extends UIHookPlugin
     protected function registerContainingPCFPath(): string
     {
         PLog::debug()->parameter();
-        return PLog::debug()->return(__DIR__ . '/../submodule/plugin-core-functions');
+        return PLog::debug()->return(__DIR__ . '/../vendor/submodules/plugin-core-functions');
     }
 
     /**

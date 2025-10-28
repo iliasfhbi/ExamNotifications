@@ -19,7 +19,7 @@ use HSBI\PluginCoreFunctions\PluginLoader;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\PCFIDIC;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\Objects\Test\TestObject;
 
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../vendor/composer-vendor/autoload.php";
 
 class ExamNotificationProvider extends AbstractNotificationProvider implements NotificationProvider
 {

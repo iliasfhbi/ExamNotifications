@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . "/../vendor/autoload.php";
-require_once __DIR__ . '/../submodule/plugin-core-functions/autoloader/Autoloader.php';
+require_once __DIR__ . "/../vendor/composer-vendor/autoload.php";
+require_once __DIR__ . '/../vendor/submodules/plugin-core-functions/autoloader/Autoloader.php';
 
 use HSBI\ExamNotifications\PLog;
 use HSBI\ExamNotifications\Control\ilExamNotificationsConfigGUI\ConfigCommand;

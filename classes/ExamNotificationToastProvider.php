@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../vendor/composer-vendor/autoload.php";
 
 use HSBI\ExamNotifications\PLog;
 use HSBI\ExamNotifications\DAO\MessageDAO;
