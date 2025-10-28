@@ -6,7 +6,7 @@ use HSBI\PHPUtilities\CRUD\Tuple\Model\Tuple;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Read\Column;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Read\DataType;
 use ilExamNotificationsPlugin;
-use ilObjUser;
+use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\PCFIDIC;
 
 /**
  * Represents a SenderColumn
@@ -60,7 +60,7 @@ class SenderColumn extends Column{
 	 */
 	public function getValue(Tuple $tuple): float|int|string
 	{
-	    return ilObjUser::_lookupFullname($tuple->getField($this->senderUserId)->getValue());
+	    return PCFIDIC::User()->lookupFullname($tuple->getField($this->senderUserId)->getValue());
 	}
 	
 }
