@@ -41,7 +41,9 @@ _[Inhaltsverzeichnis](#inhalt)_
 
 ----
 
-## 4. Installation
+## 4. Installation / Update
+
+### 4.1 Installation
 
 Ausgehend vom ILIAS-Verzeichnis
 
@@ -49,6 +51,20 @@ Ausgehend vom ILIAS-Verzeichnis
 mkdir -p Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
 git clone -b ILIAS_9.0.0 --recurse-submodules https://gitlab.fh-bielefeld.de/ilias/ExamNotifications.git ExamNotifications
+# Zurück ins ILIAS-Verzeichnis:
+cd ../../../../../../../
+sudo -uwww-data composer du
+# Der Output von composer du sollte folgende Zeile enthalten:
+# Generated autoloader for \HSBI\PluginCoreFunctions v9.0.0.2
+```
+
+### 4.2 Update
+
+Ausgehend vom ILIAS-Verzeichnis
+
+```bash
+cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
+git pull --recurse-submodules
 # Zurück ins ILIAS-Verzeichnis:
 cd ../../../../../../../
 sudo -uwww-data composer du
