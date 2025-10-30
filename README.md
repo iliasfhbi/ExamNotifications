@@ -50,12 +50,13 @@ Ausgehend vom ILIAS-Verzeichnis
 ```bash
 mkdir -p Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
-git clone -b ILIAS_9.0.0 --recurse-submodules https://gitlab.fh-bielefeld.de/ilias/ExamNotifications.git ExamNotifications
+git clone -b ILIAS_9.0.0 https://gitlab.fh-bielefeld.de/ilias/ExamNotifications.git ExamNotifications
+cd ExamNotifications
+git checkout v9.0.0.0
+git submodule update --init --recursive *
 # Zurück ins ILIAS-Verzeichnis:
-cd ../../../../../../
+cd ../../../../../../../
 sudo -uwww-data composer du
-# Der Output von composer du sollte folgende Zeile enthalten:
-# Generated autoloader for \HSBI\PluginCoreFunctions v9.0.0.2
 ```
 
 ### 4.2 Update
@@ -64,12 +65,14 @@ Ausgehend vom ILIAS-Verzeichnis
 
 ```bash
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ExamNotifications
-git pull --recurse-submodules
+git pull
+git checkout v9.0.0.0
+# Löscht ggf. nicht mehr benötigte aber noch vorhandene Submodule, die nicht mehr durch git getrackt werden und somit verwaist sind
+git clean -ffd *
+git submodule update --init --recursive *
 # Zurück ins ILIAS-Verzeichnis:
 cd ../../../../../../../
 sudo -uwww-data composer du
-# Der Output von composer du sollte folgende Zeile enthalten:
-# Generated autoloader for \HSBI\PluginCoreFunctions v9.0.0.2
 ```
 
 _[Inhaltsverzeichnis](#inhalt)_
@@ -93,7 +96,7 @@ _[Inhaltsverzeichnis](#inhalt)_
 
 | Name                  | Version    | Lokaler Einbindungspfad                                      | URL                                                          |
 | --------------------- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| plugin-core-functions | `v9.0.0.2` | [`submodule/plugin-core-functions`](submodule/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v9.0.0.2?ref_type=tags |
+| plugin-core-functions | `v9.0.0.2` | [`vendor/submodules/plugin-core-functions`](vendor/submodules/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v9.0.0.2?ref_type=tags |
 
 _[Inhaltsverzeichnis](#inhalt)_
 
