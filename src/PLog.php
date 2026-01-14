@@ -1,5 +1,6 @@
 <?php
 namespace HSBI\ExamNotifications;
+require_once __DIR__ . '/../vendor/submodules/plugin-core-functions/autoloader/Autoloader.php';
 
 use HSBI\PHPUtilities\Logger\LogInterface;
 use HSBI\PluginCoreFunctions\Logger\PluginLog;
