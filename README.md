@@ -61,7 +61,9 @@ sudo -uwww-data composer du
 
 ### 4.2 Update
 
-Ausgehend vom ILIAS-Verzeichnis
+Das Plugin in der ILIAS Plugin-Administration *deaktivieren*.
+
+Ausgehend vom ILIAS-Verzeichnis:
 
 ```bash
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ExamNotifications
@@ -74,6 +76,8 @@ git submodule update --init --recursive *
 cd ../../../../../../../
 sudo -uwww-data composer du
 ```
+
+Das Plugin in der ILIAS Plugin-Administration *updaten* und wieder *aktivieren*.
 
 _[Inhaltsverzeichnis](#inhalt)_
 
