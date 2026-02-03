@@ -1,0 +1,7 @@
+parameters:
+	level: 9
+	paths:
+		- ../classes
+		- ../src
+	bootstrapFiles:
+		- autoload.php

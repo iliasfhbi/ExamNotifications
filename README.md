@@ -100,7 +100,7 @@ _[Inhaltsverzeichnis](#inhalt)_
 
 | Name                  | Version    | Lokaler Einbindungspfad                                      | URL                                                          |
 | --------------------- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| plugin-core-functions | `v9.0.0.4` | [`vendor/submodules/plugin-core-functions`](vendor/submodules/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v9.0.0.4?ref_type=tags |
+| plugin-core-functions | `v9.0.0.6` | [`vendor/submodules/plugin-core-functions`](vendor/submodules/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v9.0.0.6?ref_type=tags |
 
 _[Inhaltsverzeichnis](#inhalt)_
 
@@ -164,6 +164,14 @@ ILIAS-Version: `9.2.1`
 Neuer Tag/Version: `v9.2.1.0`
 
 Neue [plugin.php](plugin.php)-Version: `9.2.1000`
+
+_[Inhaltsverzeichnis](#inhalt)_
+
+------
+
+## 8. Tests
+
+Testanleitung siehe **[`test/README.md`](test/README.md)**
 
 _[Inhaltsverzeichnis](#inhalt)_
 
