@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . "/../../vendor/composer-vendor/autoload.php";
 require_once __DIR__ . '/../../vendor/submodules/plugin-core-functions/autoloader/Autoloader.php';
 
 use HSBI\ExamNotifications\PLog;

@@ -21,7 +21,6 @@ use HSBI\ExamNotifications\Control\Migration\Migration_From_1_1_0;
 use HSBI\ExamNotifications\Control\Migration\Migration_From_9_0_0000;
 
 require_once __DIR__ . '/../vendor/submodules/plugin-core-functions/autoloader/Autoloader.php';
-require_once __DIR__ . "/../vendor/composer-vendor/autoload.php";
 
 /**
  * Plugin main class of ExamNotifications
