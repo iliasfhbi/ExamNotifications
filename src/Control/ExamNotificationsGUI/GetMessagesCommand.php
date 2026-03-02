@@ -44,7 +44,7 @@ class GetMessagesCommand implements Command
     public function run(): Result
     {
         PLog::debug()->parameter();
-                
+
         $pluginConfigAccess = ilExamNotificationsPlugin::instance()->getUiHookPluginInfo()->getPluginConfigAccess();
         $messageDAO = new MessageDAO();
         $messageViewedDAO = new MessageViewedDAO($messageDAO);
@@ -52,44 +52,57 @@ class GetMessagesCommand implements Command
         if ($pluginConfigAccess->getValue(PluginConfigID::PRESENTATION_TYPE, PluginConfigID::PRESENTATION_TYPE_JS->name) !== PluginConfigID::PRESENTATION_TYPE_JS->name)
             return PLog::debug()->return(new ExitResult());
 
-        $messageFilterDefinition = new FilterDefinition();
+        $closedMessageFilterDefinition = [];
 
-        $messageViewedFilterDefinition = new FilterDefinition();
-        $sortDefinition = new SortDefinition(new SortOption($messageDAO->getTimestamp(), SortDirection::DESCENDING));
-
+        
         $userID = PCFIDIC::User()->currentUserID();
         $userHasActiveTests = false;
         $userTests = [];
+        $userTestsRefs = [];
 
         foreach (PCFIDIC::Objects()->Test()->getAllTestObjectsOfUser($userID) as $refId => /** @var $testObject TestObject*/
         $testObject) {
             if ($testObject->hasUnfinishedPasses($userID)) {
                 $userHasActiveTests = true;
                 $userTests[$refId] = $testObject;
-                $messageFilterDefinition->addFilterOption(new FilterOption($messageDAO->getTestReferenceId()
-                    ->initField($refId)));
-                $messageViewedFilterDefinition->addFilterOption(new FilterOption($messageViewedDAO->getTestReferenceId()
-                    ->initField($refId)));
             }
         }
+        $userTestsRefs = array_keys($userTests);
 
         if (! $userHasActiveTests)
             return PLog::debug()->return(new ExitResult());
 
-        $messageViewedFilterDefinition->addFilterOption(new FilterOption($messageViewedDAO->getReceiverUserId()
-            ->initField($userID)));
-
         $messageStates = [];
-        foreach ($messageViewedDAO->read(filterDefinition: $messageViewedFilterDefinition) as /** @var $messageViewed MessageViewed */
-        $messageViewed) {
-            $messageStatus = $messageViewed->getMessageStatus();
-            $messageStates[$messageViewed->getMessageId()] = $messageStatus;
-            if ($messageStatus === MessageStatus::CLOSED)
-                $messageFilterDefinition->addFilterOption(new FilterOption($messageDAO->getId()
-                    ->initField($messageViewed->getMessageId()), comparisonMode: ComparisonMode::NOT_EQUAL));
+        $receiverFilterOption = new FilterOption($messageViewedDAO->getReceiverUserId()->initField($userID));
+        foreach ($userTestsRefs as $refId) {
+            $closedMessageFilterDefinition[$refId] = new FilterDefinition();
+            $messageViewedFilterDefinition = new FilterDefinition();
+            $messageViewedFilterDefinition->addFilterOption(new FilterOption($messageViewedDAO->getTestReferenceId()
+                ->initField($refId)));
+            $messageViewedFilterDefinition->addFilterOption($receiverFilterOption);
+            foreach ($messageViewedDAO->read(filterDefinition: $messageViewedFilterDefinition) as /** @var $messageViewed MessageViewed */
+            $messageViewed) {
+                $messageStatus = $messageViewed->getMessageStatus();
+                $messageStates[$messageViewed->getMessageId()] = $messageStatus;
+                if ($messageStatus === MessageStatus::CLOSED)
+                    $closedMessageFilterDefinition[$refId]->addFilterOption(new FilterOption($messageDAO->getId()
+                        ->initField($messageViewed->getMessageId()), comparisonMode: ComparisonMode::NOT_EQUAL));
+            }
         }
 
-        $messages = $messageDAO->read(sortDefinition: $sortDefinition, filterDefinition: $messageFilterDefinition);
+        $messages = [];
+
+        foreach ($userTestsRefs as $refId) {
+            $messageFilterDefinition = $closedMessageFilterDefinition[$refId];
+            $messageFilterDefinition->addFilterOption(new FilterOption($messageDAO->getTestReferenceId()
+                ->initField($refId)));
+            $testMessages = $messageDAO->read(filterDefinition: $messageFilterDefinition);
+            array_push($messages, ...$testMessages);
+        }
+        
+        usort($messages, function(Message $message1, Message $message2) :int {
+            return strcmp($message1->getTimestamp(), $message2->getTimestamp());
+        });
 
         if (sizeof($messages) == 0)
             return PLog::debug()->return(new ExitResult());
