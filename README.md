@@ -1,4 +1,4 @@
-# ExamNotifications Plugin `v9.0.0.5`
+# ExamNotifications Plugin `v9.0.0.6`
 
 ILIAS-Plugin für das Senden von Benachrichtigungen an Studierende während einer Prüfung
 
@@ -52,7 +52,7 @@ mkdir -p Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
 git clone -b ILIAS_9.0.0 https://gitlab.fh-bielefeld.de/ilias/ExamNotifications.git ExamNotifications
 cd ExamNotifications
-git checkout v9.0.0.5
+git checkout v9.0.0.6
 git submodule update --init --recursive *
 # Zurück ins ILIAS-Verzeichnis:
 cd ../../../../../../../
@@ -68,7 +68,7 @@ Ausgehend vom ILIAS-Verzeichnis:
 ```bash
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ExamNotifications
 git pull
-git checkout v9.0.0.5
+git checkout v9.0.0.6
 # Löscht ggf. nicht mehr benötigte aber noch vorhandene Submodule, die nicht mehr durch git getrackt werden und somit verwaist sind
 git clean -ffd *
 git submodule update --init --recursive *
