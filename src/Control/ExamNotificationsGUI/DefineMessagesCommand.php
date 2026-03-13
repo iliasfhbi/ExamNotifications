@@ -15,6 +15,7 @@ use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\PCFIDIC;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\Command;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\Result;
 use HSBI\PluginCoreFunctions\UIComponents\UITableTupleCRUD;
+use HSBI\PluginCoreFunctions\UIComponents\Icon\StandardIcon;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Delete\DeleteAllAction;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Export\ExportAllAction;
 use HSBI\PluginCoreFunctions\UIComponents\TableTupleCRUD\Model\Export\ExportType;
@@ -80,7 +81,7 @@ class DefineMessagesCommand implements Command
         return PLog::debug()->return(new UIComponentResult(
             $table, 
             "{$plugin->txt('plugin_name')} - $testTitle", 
-            'templates/default/images/standard/icon_adn.svg')
+            StandardIcon::ADMINISTRATIVE_NOTIFICATIONS->getRelativeURL())
             );
     }
 
