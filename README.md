@@ -10,7 +10,7 @@ ILIAS-Plugin für das Senden von Benachrichtigungen an Studierende während eine
 
 ## 1. Kompatibilität
 
-Das Plugin wurde mit Version `9.14` getestet.
+Das Plugin wurde mit Version `10.5` getestet.
 
 _[Inhaltsverzeichnis](#inhalt)_
 
@@ -100,7 +100,7 @@ _[Inhaltsverzeichnis](#inhalt)_
 
 | Name                  | Version    | Lokaler Einbindungspfad                                      | URL                                                          |
 | --------------------- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| plugin-core-functions | `v9.0.0.6` | [`vendor/submodules/plugin-core-functions`](vendor/submodules/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v9.0.0.6?ref_type=tags |
+| plugin-core-functions | `v10.0.0.1` | [`vendor/submodules/plugin-core-functions`](vendor/submodules/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v10.0.0.1?ref_type=tags |
 
 _[Inhaltsverzeichnis](#inhalt)_
 
