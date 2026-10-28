@@ -10,7 +10,7 @@ ILIAS-Plugin für das Senden von Benachrichtigungen an Studierende während eine
 
 ## 1. Kompatibilität
 
-Das Plugin wurde mit Version `10.5` getestet.
+Das Plugin wurde mit Version `11.5` getestet.
 
 _[Inhaltsverzeichnis](#inhalt)_
 
@@ -50,9 +50,9 @@ Ausgehend vom ILIAS-Verzeichnis
 ```bash
 mkdir -p Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook
-git clone -b ILIAS_10.0.0 https://gitlab.fh-bielefeld.de/ilias/ExamNotifications.git ExamNotifications
+git clone -b ILIAS_11.0.0 https://gitlab.fh-bielefeld.de/ilias/ExamNotifications.git ExamNotifications
 cd ExamNotifications
-git checkout v10.0.0.0
+git checkout v11.0.0.0
 git submodule update --init --recursive *
 # Zurück ins ILIAS-Verzeichnis:
 cd ../../../../../../../
@@ -68,7 +68,7 @@ Ausgehend vom ILIAS-Verzeichnis:
 ```bash
 cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ExamNotifications
 git pull
-git checkout v10.0.0.0
+git checkout v11.0.0.0
 # Löscht ggf. nicht mehr benötigte aber noch vorhandene Submodule, die nicht mehr durch git getrackt werden und somit verwaist sind
 git clean -ffd *
 git submodule update --init --recursive *
@@ -107,7 +107,7 @@ _[Inhaltsverzeichnis](#inhalt)_
 -----
 ## 7. Branches
 
-Eine neue Branch wird immer dann angelegt, wenn das Plugin aufgrund von Änderungen am ILIAS-Code nicht mehr funktioniert. Die Branch heißt dann wie die ILIAS-Version, die die Änderungen verursacht. Z.B.: `ILIAS_10.6.0`
+Eine neue Branch wird immer dann angelegt, wenn das Plugin aufgrund von Änderungen am ILIAS-Code nicht mehr funktioniert. Die Branch heißt dann wie die ILIAS-Version, die die Änderungen verursacht. Z.B.: `ILIAS_11.6.0`
 
 _[Inhaltsverzeichnis](#inhalt)_
 
@@ -121,13 +121,13 @@ Ein neuer Tag wird dann gesetzt, wenn das Plugin eine neue Funktion/Bug-Fix hinz
 
 Die ersten 3 Zahlen geben die minimale ILIAS Version an mit der das Plugin funktioniert und die letzte Zahl gibt die  Plugin Version für diese ILIAS Version an. Beispiel:
 
-Ausgangs Tag/Version: `v10.0.0.4`
+Ausgangs Tag/Version: `v11.0.0.4`
 
-ILIAS-Version: `10.0.0`
+ILIAS-Version: `11.0.0`
 
-Plugin-Version für ILIAS-Version (`10.0.0`): `4`
+Plugin-Version für ILIAS-Version (`11.0.0`): `4`
 
-Da ILIAS nur 3-teiligen Versionen unterstützt, wird in der [plugin.php](plugin.php)-Version die letzten drei Stellen des 3. Teils als  Plugin-Version verwendet: `10.0.0004`
+Da ILIAS nur 3-teiligen Versionen unterstützt, wird in der [plugin.php](plugin.php)-Version die letzten drei Stellen des 3. Teils als  Plugin-Version verwendet: `11.0.0004`
 
 ### 8.2 Neue Funktion/Bug-Fix
 
@@ -135,35 +135,35 @@ Da ILIAS nur 3-teiligen Versionen unterstützt, wird in der [plugin.php](plugin.
 
 Wird eine neue Funktion/Bug-Fix für eine bestimmte ILIAS-Version hinzugefügt, wird die letzte Zahl der letzten Version erhöht. Beispiel:
 
-ILIAS-Version: `10.0.0`
+ILIAS-Version: `11.0.0`
 
-Letzter Tag/Version für ILIAS-Version (`10.0.0`): `v10.0.0.4`
+Letzter Tag/Version für ILIAS-Version (`11.0.0`): `v11.0.0.4`
 
-Neuer Tag/Version: `v10.0.0.5`
+Neuer Tag/Version: `v11.0.0.5`
 
-Neue [plugin.php](plugin.php)-Version: `10.0.0005`
+Neue [plugin.php](plugin.php)-Version: `11.0.0005`
 
 #### 8.2.2 Tags/Versionen für eine bestimmte ILIAS-Version nicht vorhanden
 
 Ist noch kein Tag/Version für eine ILIAS-Version vorhanden, ist die letzte Zahl der Version `0`. Beispiel:
 
-ILIAS-Version: `10.0.1`
+ILIAS-Version: `11.0.1`
 
-Letzter Tag/Version für ILIAS-Version (`10.0.1`): `nicht vorhanden`
+Letzter Tag/Version für ILIAS-Version (`11.0.1`): `nicht vorhanden`
 
-Neuer Tag/Version: `v10.0.1.0`
+Neuer Tag/Version: `v11.0.1.0`
 
-Neue [plugin.php](plugin.php)-Version: `10.0.1000`
+Neue [plugin.php](plugin.php)-Version: `11.0.1000`
 
 ### 8.3 Anpassung an eine neue ILIAS-Version
 
 Da noch kein Tag/Version für eine neue ILIAS-Version vorhanden sein kann, ist die letzte Zahl der Version `0`. Beispiel:
 
-ILIAS-Version: `10.2.1`
+ILIAS-Version: `11.2.1`
 
-Neuer Tag/Version: `v10.2.1.0`
+Neuer Tag/Version: `v11.2.1.0`
 
-Neue [plugin.php](plugin.php)-Version: `10.2.1000`
+Neue [plugin.php](plugin.php)-Version: `11.2.1000`
 
 _[Inhaltsverzeichnis](#inhalt)_
 
