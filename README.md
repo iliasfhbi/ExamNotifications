@@ -100,7 +100,7 @@ _[Inhaltsverzeichnis](#inhalt)_
 
 | Name                  | Version    | Lokaler Einbindungspfad                                      | URL                                                          |
 | --------------------- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| plugin-core-functions | `v10.0.0.1` | [`vendor/submodules/plugin-core-functions`](vendor/submodules/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v10.0.0.1?ref_type=tags |
+| plugin-core-functions | `v11.0.0.0` | [`vendor/submodules/plugin-core-functions`](vendor/submodules/plugin-core-functions) | https://gitlab.fh-bielefeld.de/ilias/plugin-core-functions/-/tree/v11.0.0.0?ref_type=tags |
 
 _[Inhaltsverzeichnis](#inhalt)_
 
