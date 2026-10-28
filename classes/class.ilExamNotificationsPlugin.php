@@ -9,6 +9,7 @@ use HSBI\PluginCoreFunctions\MainMenu\Model\Entries;
 use HSBI\PluginCoreFunctions\MainMenu\Model\Entry;
 use HSBI\PluginCoreFunctions\MainMenu\Model\Link;
 use HSBI\PluginCoreFunctions\PluginMainClass\UIHookPlugin;
+use HSBI\PluginCoreFunctions\PluginMainClass\Functions\UIHookPluginInstanceAccess;
 use HSBI\PluginCoreFunctions\PluginMainClass\Registration\AdditionalGlobalJavaScriptRegistration;
 use HSBI\PluginCoreFunctions\PluginMainClass\Registration\ContainingPCFPathRegistration;
 use HSBI\PluginCoreFunctions\PluginMainClass\Registration\DAORegistration;
@@ -28,6 +29,8 @@ require_once __DIR__ . '/../vendor/submodules/plugin-core-functions/autoloader/A
 class ilExamNotificationsPlugin extends UIHookPlugin
 {
 
+    use UIHookPluginInstanceAccess;
+    
     /**
      *
      * {@inheritdoc}
