@@ -203,8 +203,7 @@ class MessageUIComponent extends UIComponent
         $messageBoxContent .= $footer;
 
         $messageBox = $uiFactory->messageBox()->failure($messageBoxContent);
-        
         $container = "<div id='$examNotificationDivID'>{$uiRenderer->render($messageBox)}</div>";
-        return PLog::debug()->return($uiFactory->legacy($container));
+        return PLog::debug()->return($uiFactory->legacy()->content($container));
     }
 }

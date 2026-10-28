@@ -73,7 +73,9 @@ class MessageContainerUIComponent extends UIComponent
         foreach ($this->messageUIComponents as /** @var $messageUIComponent MessageUIComponent*/
         $messageUIComponent)
             $renderedMessageUIComponents .= $messageUIComponent->render();
-        $messageContainerUIComponent = $this->uiFactory()->legacy($renderedMessageUIComponents);
+        $messageContainerUIComponent = $this->uiFactory()
+            ->legacy()
+            ->content($renderedMessageUIComponents);
         return PLog::debug()->return($messageContainerUIComponent);
     }
 }
