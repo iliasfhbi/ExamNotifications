@@ -8,20 +8,18 @@ use HSBI\ExamNotifications\Model\Message;
 use HSBI\ExamNotifications\Model\MessageStatus;
 use HSBI\ExamNotifications\Model\MessageViewed;
 use HSBI\ExamNotifications\Model\PluginConfigID;
-use HSBI\ExamNotifications\View\Message\UIComponent\MessageContainerUIComponent;
 use HSBI\ExamNotifications\View\Message\UIComponent\MessageUIComponent;
 use HSBI\PHPUtilities\CRUD\Model\ComparisonMode;
 use HSBI\PHPUtilities\CRUD\Model\FilterDefinition;
 use HSBI\PHPUtilities\CRUD\Model\FilterOption;
-use HSBI\PHPUtilities\CRUD\Model\SortDefinition;
-use HSBI\PHPUtilities\CRUD\Model\SortDirection;
-use HSBI\PHPUtilities\CRUD\Model\SortOption;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\PCFIDIC;
 use HSBI\PluginCoreFunctions\DependencyInjection\Control\ILIAS\Objects\Test\TestObject;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\Command;
+use HSBI\PluginCoreFunctions\GUI\Command\Model\ExitResult;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\Result;
 use HSBI\PluginCoreFunctions\GUI\Command\Model\UIComponentExitResult;
-use HSBI\PluginCoreFunctions\GUI\Command\Model\ExitResult;
+use HSBI\PluginCoreFunctions\UIComponents\UILegacyContent;
+use ExamNotificationsGUI;
 use ilExamNotificationsPlugin;
 
 /**
@@ -119,7 +117,7 @@ class GetMessagesCommand implements Command
             $thisRef = PCFIDIC::CTRL()->HTTPReferer()->getRefID();
         }
 
-        $messageContainerUIComponent = new MessageContainerUIComponent();
+        $messageContainer = new UILegacyContent();
         foreach ($messages as /** @var $message Message*/
         $message) {
             $messageStatus = $messageStates[$message->getId()] ?? null;
@@ -128,9 +126,9 @@ class GetMessagesCommand implements Command
             $link = null;
             if (! ($isCmdClassTestPlayer && $thisRef === $testRef))
                 $link = "ilias.php?baseClass=ilrepositorygui&cmdClass=ilTestScreenGUI&cmd=testScreen&ref_id=$testRef";
-            $messageContainerUIComponent->addMessageUIComponents(new MessageUIComponent($message->getId(), $message->getText(), $message->getTimestamp(), $title, $link));
+                $messageContainer->addHTMLOrUIComponents(new MessageUIComponent($message->getId(), $message->getText(), $message->getTimestamp(), $title, $link));
         }
-        return PLog::debug()->return(new UIComponentExitResult($messageContainerUIComponent));
+        return PLog::debug()->return(new UIComponentExitResult($messageContainer));
     }
 
     /**

@@ -111,6 +111,8 @@ class ilExamNotificationsPlugin extends UIHookPlugin
         PLog::debug()->parameter();
         $additionalGlobalJavaScripts = [];
         $pluginConfigAccess = self::instance()->getUiHookPluginInfo()->getPluginConfigAccess();
+        //https://ilias11.lan/ilias.php?baseClass=ildashboardgui&cmdNode=ba:2x:ik&cmdClass=ilLocalUserPasswordSettingsGUI&cmd=showPassword
+        if(PCFIDIC::CTRL()->getCmdClass() !== 'illocaluserpasswordsettingsgui')
         if ($pluginConfigAccess->getValue(PluginConfigID::PRESENTATION_TYPE, PluginConfigID::PRESENTATION_TYPE_JS->name) === PluginConfigID::PRESENTATION_TYPE_JS->name)
             // Add/Update version add the end to ensure that the cached Js will be requested again on changes.
             $additionalGlobalJavaScripts[] = "Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/ExamNotifications/src/ExamNotificationV1.js";
