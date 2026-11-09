@@ -661,41 +661,6 @@ Search.appendIndex(
             "summary": "The\u0020\u0024timestamp\u0020of\u0020this\u0020TimestampColumn",
             "url": "classes/HSBI-ExamNotifications-View-Message-History-TimestampColumn.html#property_timestamp"
         },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageContainerUIComponent",
-            "name": "MessageContainerUIComponent",
-            "summary": "Represents\u0020a\u0020MessageContainerUIComponent",
-            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageContainerUIComponent.html"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageContainerUIComponent\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Constructs\u0020an\u0020new\u0020instance\u0020of\u0020MessageContainerUIComponent.",
-            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageContainerUIComponent.html#method___construct"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageContainerUIComponent\u003A\u003AgetMessageUIComponents\u0028\u0029",
-            "name": "getMessageUIComponents",
-            "summary": "Gets\u0020the\u0020\u0024messageUIComponents\u0020of\u0020this\u0020MessageContainerUIComponent.",
-            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageContainerUIComponent.html#method_getMessageUIComponents"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageContainerUIComponent\u003A\u003AaddMessageUIComponents\u0028\u0029",
-            "name": "addMessageUIComponents",
-            "summary": "Adds\u0020MessageUIComponent\u0028s\u0029\u0020to\u0020the\u0020\u0024messageUIComponents\u0020of\u0020this\u0020MessageContainerUIComponent.",
-            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageContainerUIComponent.html#method_addMessageUIComponents"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageContainerUIComponent\u003A\u003AsetMessageUIComponents\u0028\u0029",
-            "name": "setMessageUIComponents",
-            "summary": "Sets\u0020the\u0020\u0024messageUIComponents\u0020of\u0020this\u0020MessageContainerUIComponent.",
-            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageContainerUIComponent.html#method_setMessageUIComponents"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageContainerUIComponent\u003A\u003Abuild\u0028\u0029",
-            "name": "build",
-            "summary": "",
-            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageContainerUIComponent.html#method_build"
-        },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageContainerUIComponent\u003A\u003A\u0024messageUIComponents",
-            "name": "messageUIComponents",
-            "summary": "The\u0020\u0024messageUIComponents\u0020of\u0020this\u0020MessageContainerUIComponent",
-            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageContainerUIComponent.html#property_messageUIComponents"
-        },                {
             "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent",
             "name": "MessageUIComponent",
             "summary": "Represents\u0020a\u0020MessageUIComponent",
@@ -756,10 +721,45 @@ Search.appendIndex(
             "summary": "Sets\u0020the\u0020\u0024testLink\u0020of\u0020this\u0020MessageUIComponent.",
             "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_setTestLink"
         },                {
-            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003Abuild\u0028\u0029",
-            "name": "build",
+            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003AbuildCloseButtonHTML\u0028\u0029",
+            "name": "buildCloseButtonHTML",
+            "summary": "Builds\u0020the\u0020HTML\u0020for\u0020the\u0020close\u0020button\u0020of\u0020this\u0020MessageUIComponent",
+            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_buildCloseButtonHTML"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003AbuildTitleParagraphHTML\u0028\u0029",
+            "name": "buildTitleParagraphHTML",
+            "summary": "Builds\u0020the\u0020HTML\u0020for\u0020the\u0020title\u0020paragraph\u0020of\u0020this\u0020MessageUIComponent",
+            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_buildTitleParagraphHTML"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003AbuildContentParagraphHTML\u0028\u0029",
+            "name": "buildContentParagraphHTML",
+            "summary": "Builds\u0020the\u0020HTML\u0020for\u0020the\u0020content\u0020paragraph\u0020of\u0020this\u0020MessageUIComponent",
+            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_buildContentParagraphHTML"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003AbuildTimestampSectionHTML\u0028\u0029",
+            "name": "buildTimestampSectionHTML",
+            "summary": "Builds\u0020the\u0020HTML\u0020for\u0020the\u0020timestamp\u0020section\u0020of\u0020this\u0020MessageUIComponent",
+            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_buildTimestampSectionHTML"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003AbuildTestLinkUIComponent\u0028\u0029",
+            "name": "buildTestLinkUIComponent",
+            "summary": "Builds\u0020the\u0020UIComponent\u0020for\u0020the\u0020timestamp\u0020section\u0020of\u0020this\u0020MessageUIComponent",
+            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_buildTestLinkUIComponent"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003AbuildFooterUIComponent\u0028\u0029",
+            "name": "buildFooterUIComponent",
+            "summary": "Builds\u0020the\u0020UIComponent\u0020for\u0020the\u0020footer\u0020section\u0020of\u0020this\u0020MessageUIComponent",
+            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_buildFooterUIComponent"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003AbuildMessageBoxUIComponent\u0028\u0029",
+            "name": "buildMessageBoxUIComponent",
+            "summary": "Builds\u0020the\u0020UIComponent\u0020for\u0020the\u0020MessageBox\u0020of\u0020this\u0020MessageUIComponent",
+            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_buildMessageBoxUIComponent"
+        },                {
+            "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003AbuildUILegacyContent\u0028\u0029",
+            "name": "buildUILegacyContent",
             "summary": "",
-            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_build"
+            "url": "classes/HSBI-ExamNotifications-View-Message-UIComponent-MessageUIComponent.html#method_buildUILegacyContent"
         },                {
             "fqsen": "\\HSBI\\ExamNotifications\\View\\Message\\UIComponent\\MessageUIComponent\u003A\u003A\u0024messageID",
             "name": "messageID",
